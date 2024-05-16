@@ -1,0 +1,19 @@
+<h2 mat-dialog-title style="margin: 0px auto;">Créer un cours</h2>
+<mat-dialog-content class="mat-typography">
+<form class="example-form" style="display: block;">
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+Test :
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->     
+<br>
+<div style="width: 62%; margin: auto; ">
+<p-button label="Valider" icon="pi pi-check" severity="secondary"></p-button><p-button  label="Non valider" icon="pi pi-times" severity="danger"></p-button>
+</div>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

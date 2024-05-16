@@ -1,0 +1,378 @@
+<div class="home-container"
+  ><div class="home-container01"
+    ><img
+      alt="Logo EduXcellence"
+      src="https://th.bing.com/th/id/OIG2.9yAdm2O23fK8V4r5ZdRx?w=1024&amp;h=1024&amp;rs=1&amp;pid=ImgDetMain"
+      loading="lazy"
+      class="home-image"
+    /><div class="home-container02"
+      ><div class="home-container03"
+        ><div class="home-container04"
+          ><div class="home-container05"
+            ><svg viewBox="0 0 1024 1024" class="home-icon">
+              <path
+                d="M896 896v-85.333c0-58.88-23.936-112.299-62.464-150.869s-91.989-62.464-150.869-62.464h-341.333c-58.88 0-112.299 23.936-150.869 62.464s-62.464 91.989-62.464 150.869v85.333c0 23.552 19.115 42.667 42.667 42.667s42.667-19.115 42.667-42.667v-85.333c0-35.371 14.293-67.285 37.504-90.496s55.125-37.504 90.496-37.504h341.333c35.371 0 67.285 14.293 90.496 37.504s37.504 55.125 37.504 90.496v85.333c0 23.552 19.115 42.667 42.667 42.667s42.667-19.115 42.667-42.667zM725.333 298.667c0-58.88-23.936-112.299-62.464-150.869s-91.989-62.464-150.869-62.464-112.299 23.936-150.869 62.464-62.464 91.989-62.464 150.869 23.936 112.299 62.464 150.869 91.989 62.464 150.869 62.464 112.299-23.936 150.869-62.464 62.464-91.989 62.464-150.869zM640 298.667c0 35.371-14.293 67.285-37.504 90.496s-55.125 37.504-90.496 37.504-67.285-14.293-90.496-37.504-37.504-55.125-37.504-90.496 14.293-67.285 37.504-90.496 55.125-37.504 90.496-37.504 67.285 14.293 90.496 37.504 37.504 55.125 37.504 90.496z"
+              ></path></svg></div
+          ><div class="home-container06"
+            >
+            <!-- ------------------------------------------------------------------------------------------------------------>
+<input  
+              type="text" 
+              required="true"
+              autofocus="true"
+              [(ngModel)]="NomPrenom"
+              placeholder="Nom et prénom"
+              class="home-textinput input" /></div></div
+        ><div class="home-container07"
+          ><div class="home-container08"
+            ><svg viewBox="0 0 1024 1024" class="home-icon2">
+              <path
+                d="M512 640q52 0 90-38t38-90-38-90-90-38-90 38-38 90 38 90 90 38zM512 86q176 0 301 125t125 301v62q0 64-43 108t-105 44q-78 0-126-64-64 64-152 64t-151-63-63-151 63-151 151-63 151 63 63 151v62q0 26 19 46t45 20 45-20 19-46v-62q0-140-101-241t-241-101-241 101-101 241 101 241 241 101h214v84h-214q-176 0-301-125t-125-301 125-301 301-125z"
+              ></path></svg></div
+          ><div class="home-container09"
+            >
+
+            <div *ngIf="!NomPrenom && NomPrenomTouched" class="popup alert-popup" style="position: fixed; top: 80px; right: 20px;" aria-hidden="true">
+              <div class="popup-icon alert-icon">
+                <svg
+                  class="alert-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div class="alert-message">Le nom et prénom sont Obligatoire.</div>
+              <div class="popup-icon close-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  class="close-svg"
+                >
+                  <path
+                    d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                    class="close-path" (click)="closeAlert()"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- ------------------------------------------------------------------------------------------------------------>
+<input
+              type="email"
+              placeholder="Email"
+              [(ngModel)]="Email"
+              class="home-textinput1 input" /></div></div
+        ><div class="home-container10"
+          ><div class="home-container11"
+            ><svg viewBox="0 0 1024 1024" class="home-icon4">
+              <path
+                d="M1002.132 314.242l-101.106-101.104c-24.792-24.794-65.37-65.368-90.162-90.164l-101.106-101.104c-24.792-24.794-68.954-29.166-98.13-9.716l-276.438 184.292c-29.176 19.452-40.218 61.028-24.536 92.39l70.486 140.974c2.154 4.306 4.646 8.896 7.39 13.66l-356.53 356.53-32 224h192v-64h128v-128h128v-128h128v-71.186c6.396 3.812 12.534 7.216 18.192 10.044l140.97 70.488c31.366 15.682 72.94 4.638 92.39-24.538l184.294-276.44c19.454-29.172 15.078-73.33-9.714-98.126zM150.628 854.626l-45.254-45.254 311.572-311.57 45.254 45.254-311.572 311.57zM917.020 423.764l-45.256 45.256c-12.446 12.444-32.808 12.444-45.254 0l-271.53-271.53c-12.446-12.444-12.446-32.81 0-45.254l45.256-45.256c12.446-12.444 32.808-12.444 45.254 0l271.53 271.53c12.446 12.444 12.446 32.81 0 45.254z"
+              ></path></svg></div
+          ><div class="home-container12"
+            >
+
+            <div *ngIf="!Email && EmailTouched" class="popup alert-popup" style="position: fixed; top: 80px; right: 20px;" aria-hidden="true">
+              <div class="popup-icon alert-icon">
+                <svg
+                  class="alert-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div class="alert-message">L'email est Obligatoire.</div>
+              <div class="popup-icon close-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  class="close-svg"
+                >
+                  <path
+                    d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                    class="close-path" (click)="closeAlert()"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="Email && !isValidEmail(Email)" class="popup alert-popup" style="position: fixed; top: 80px; right: 20px;" aria-hidden="true">
+              <div class="popup-icon alert-icon">
+                <svg
+                  class="alert-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div class="alert-message">L'email doit être valide.</div>
+              <div class="popup-icon close-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  class="close-svg"
+                >
+                  <path
+                    d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                    class="close-path" (click)="closeAlert()"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            
+            <!-- ------------------------------------------------------------------------------------------------------------>
+<input
+              type="password" 
+              placeholder="Mot de passe"
+              [(ngModel)]="MotDePasse"
+              class="home-textinput2 input" /></div></div
+        ><div class="home-container13"
+          ><div class="home-container14"
+            ><svg viewBox="0 0 1097.142857142857 1024" class="home-icon6">
+              <path
+                d="M548.571 0l548.571 219.429v73.143h-73.143c0 20-17.714 36.571-39.429 36.571h-872c-21.714 0-39.429-16.571-39.429-36.571h-73.143v-73.143zM146.286 365.714h146.286v438.857h73.143v-438.857h146.286v438.857h73.143v-438.857h146.286v438.857h73.143v-438.857h146.286v438.857h33.714c21.714 0 39.429 16.571 39.429 36.571v36.571h-950.857v-36.571c0-20 17.714-36.571 39.429-36.571h33.714v-438.857zM1057.714 914.286c21.714 0 39.429 16.571 39.429 36.571v73.143h-1097.143v-73.143c0-20 17.714-36.571 39.429-36.571h1018.286z"
+              ></path></svg></div
+          ><div class="home-container15"
+            >
+
+            <div *ngIf="!MotDePasse && MotDePasseTouched" class="popup alert-popup" style="position: fixed; top: 80px; right: 20px;" aria-hidden="true">
+              <div class="popup-icon alert-icon">
+                <svg
+                  class="alert-svg"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              <div class="alert-message">Le mot de passe est Obligatoire.</div>
+              <div class="popup-icon close-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  class="close-svg"
+                >
+                  <path
+                    d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+                    class="close-path" (click)="closeAlert2()"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+      <div *ngIf="MotDePasse && !isStrongPassword(MotDePasse)" class="popup alert-popup" style="position: fixed; top: 80px; right: 20px;" aria-hidden="true">
+        <div class="popup-icon alert-icon">
+          <svg
+            class="alert-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <div class="alert-message">Le mot de passe doit être fort (au moins 8 caractères, avec au moins une lettre et un chiffre).</div>
+        <div class="popup-icon close-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            class="close-svg"
+          >
+            <path
+              d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+              class="close-path" (click)="closeAlert2()"
+            ></path>
+          </svg>
+        </div>
+      </div>
+            <!-- ------------------------------------------------------------------------------------------------------------>
+<input
+              type="text"
+              placeholder="Niveau d'etude"
+              [(ngModel)]="Niveaudetude"
+              class="home-textinput3 input" /></div></div
+        ><button type="button" class="home-button button" (click)="InscriptionParticipant()" 
+          ><span>s&apos;inscrire</span></button
+        ></div
+      ></div
+    ></div
+  ></div
+>
+
+<div *ngIf="!Niveaudetude && NiveauDetudeTouched" class="popup alert-popup" style="position: fixed; top: 80px; right: 20px;" aria-hidden="true">
+  <div class="popup-icon alert-icon" >
+    <svg
+      class="alert-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  </div>
+  <div class="alert-message">Le niveau d'étude est Obligatoire.</div>
+  <div class="popup-icon close-icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      class="close-svg"
+    >
+      <path
+        d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+        class="close-path" (click)="closeAlert2()"
+      ></path>
+    </svg>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------------------------------------------------------>
+<div class="popup-container" style="position: fixed; top: 80px; right: 20px;">
+  <div class="popup success-popup" *ngIf="messagesuccess" aria-hidden="true">
+    <div class="popup-icon success-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        class="success-svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="m12 1c-6.075 0-11 4.925-11 11s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11zm4.768 9.14c.0878-.1004.1546-.21726.1966-.34383.0419-.12657.0581-.26026.0477-.39319-.0105-.13293-.0475-.26242-.1087-.38085-.0613-.11844-.1456-.22342-.2481-.30879-.1024-.08536-.2209-.14938-.3484-.18828s-.2616-.0519-.3942-.03823c-.1327.01366-.2612.05372-.3782.1178-.1169.06409-.2198.15091-.3027.25537l-4.3 5.159-2.225-2.226c-.1886-.1822-.4412-.283-.7034-.2807s-.51301.1075-.69842.2929-.29058.4362-.29285.6984c-.00228.2622.09851.5148.28067.7034l3 3c.0983.0982.2159.1748.3454.2251.1295.0502.2681.0729.4069.0665.1387-.0063.2747-.0414.3991-.1032.1244-.0617.2347-.1487.3236-.2554z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
+    <div class="success-message">{{messagesuccess}}</div>
+    <div class="popup-icon close-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+        class="close-svg"
+      >
+        <path
+          d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+          class="close-path" (click)="closeAlert()"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------------------------------------------------------------>
+  <div class="popup alert-popup" *ngIf="messagealert" aria-hidden="true">
+    <div class="popup-icon alert-icon">
+      <svg
+        class="alert-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
+    <div class="alert-message">{{messagealert}}</div>
+    <div class="popup-icon close-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        class="close-svg"
+      >
+        <path
+          d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+          class="close-path" (click)="closeAlert()"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------------------------------------------------------------>
+  <div class="popup error-popup" *ngIf="messageerror" aria-hidden="true">
+    <div class="popup-icon error-icon" >
+      <svg
+        class="error-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
+    <div class="error-message">{{messageerror}}</div>
+    <div class="popup-icon close-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        class="close-svg"
+      >
+        <path
+          d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+          class="close-path"  (click)="closeAlert()"
+        ></path>
+      </svg>
+    </div>
+  </div>
+  <!-- ------------------------------------------------------------------------------------------------------------
+  <div-- class="popup info-popup">
+    <div class="popup-icon info-icon">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        class="info-svg"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          fill-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
+    <div class="info-message">lorem ipsum dolor sit amet</div>
+    <div class="popup-icon close-icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        class="close-svg"
+      >
+        <path
+          d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+          class="close-path"
+        ></path>
+      </svg>
+    </div>
+  </div-->
+</div>
+

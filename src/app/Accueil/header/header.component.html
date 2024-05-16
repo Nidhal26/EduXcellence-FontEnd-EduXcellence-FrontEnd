@@ -1,0 +1,28 @@
+
+    <header>
+        <div class="nav-wrapper">
+            <div class="logo-container">
+                <img class="logo" src="https://i.imgur.com/gea725J.png" alt="Logo">
+            </div>
+            <nav>
+                <input class="hidden" type="checkbox" id="menuToggle">
+                <label class="menu-btn" for="menuToggle">
+                    <div class="menu"></div>
+                    <div class="menu"></div>
+                    <div class="menu"></div>
+                </label>
+                <div class="nav-container" style="display: inline-block;">
+                    <ul class="nav-tabs">
+                        <li class="nav-tab"routerLink="/">Home</li>
+                        <li class="nav-tab"routerLink="">Products</li>
+                        <li class="nav-tab"routerLink="">Services</li>
+                        <li class="nav-tab"routerLink="">FAQ</li>
+                        <li class="nav-tab"routerLink="/Contact">Contact</li>
+                    <li class="nav-tab"routerLink="/Propos" style="width:700px;">A propos</li>
+                        <button *ngIf="token.length==0" type="button" class="home-button button" routerLink="/Authentification/EduXcellence" style="width:   590px ;"><span>Se Connecter</span></button>
+                        <button *ngIf="token.length >0" type="button"  class="home-button button" style="width:590px ;"><span (click)="SeDeconnecter()">Se Deconnecter</span></button>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>

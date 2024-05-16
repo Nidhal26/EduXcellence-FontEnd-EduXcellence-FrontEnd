@@ -1,0 +1,107 @@
+<h2 mat-dialog-title style="margin: 0px auto;">Modifier Cpmpte De Formateur</h2>
+<mat-dialog-content class="mat-typography">
+  
+  <form class="example-form" style="display: block;">
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <mat-form-field class="example-full-width " style="width: 500px; border-radius: 50px; display: block; margin: 0 auto;">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+      }
+      @if (emailFormControl.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Enter your password</mat-label>
+  <input placeholder="xx-xx-xx-xx-xx" matInput [type]="hide ? 'password' : 'text'" [formControl]="motdepasseFormControl" [errorStateMatcher]="matcher">
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+  @if (motdepasseFormControl.hasError('pattern') && !motdepasseFormControl.hasError('required')) {
+    <mat-error>Enter Un Mot De Passe Contient [A..Z et a..z]</mat-error>
+  }
+  @if (motdepasseFormControl.hasError('required')) {
+    <mat-error>Mot De Passe <strong>Obligatoire</strong></mat-error>
+  }
+  @if (motdepasseFormControl.hasError('missingUpperCase')) {
+      <mat-error>Le mot de passe doit contenir au moins une lettre <strong>majuscule</strong></mat-error>
+    }
+  @if (motdepasseFormControl.hasError('missingLowerCase')) {
+      <mat-error>Le mot de passe doit contenir au moins une lettre <strong>minuscule</strong></mat-error>
+    }
+  @if (motdepasseFormControl.hasError('missingDigit')) {
+      <mat-error>Le mot de passe doit contenir au moins un <strong>chiffre</strong></mat-error>
+    }
+  @if (motdepasseFormControl.hasError('minlength')) {
+      <mat-error>longueur du mot de passe est au moins de <strong>10 caractères</strong></mat-error>
+    }
+</mat-form-field>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+   
+<mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Entrer Numero de telephone</mat-label>
+  <input type="tel" matInput [formControl]="telephoneFormControl" [errorStateMatcher]="matcher"
+         placeholder="xx-xxx-xxx">
+  <mat-hint>Errors appear instantly!</mat-hint>
+  @if (telephoneFormControl.hasError('missingDigit') && !telephoneFormControl.hasError('required')) {
+    <mat-error>Le mot de passe doit contenir des <strong>chiffre</strong></mat-error>
+  }
+  @if (telephoneFormControl.hasError('required')) {
+    <mat-error>Email is <strong>required</strong></mat-error>
+  }
+  @if (telephoneFormControl.hasError('minlength')) {
+    <mat-error>Le mot de passe doit contenir <strong>8 chiffre</strong></mat-error>
+  }
+</mat-form-field>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+  <br>        
+   
+  <h3>CV</h3>      
+<div class="card flex justify-content-center" >
+  <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*" maxFileSize="1000000">
+      <ng-template pTemplate="toolbar">
+          <div class="py-3">Upload 3 Files</div>
+      </ng-template>
+      <ng-template let-file pTemplate="file">
+          <div>Custom UI to display a file</div>
+      </ng-template>
+      <ng-template pTemplate="content" let-files>
+          <div>Additional content.</div>
+      </ng-template>
+  </p-fileUpload>
+</div>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<br>        
+   
+<h3>Image</h3>  
+<div class="card flex justify-content-center">
+  <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*" maxFileSize="1000000">
+      <ng-template pTemplate="toolbar">
+          <div class="py-3">Upload 3 Files</div>
+      </ng-template>
+      <ng-template let-file pTemplate="file">
+          <div>Custom UI to display a file</div>
+      </ng-template>
+      <ng-template pTemplate="content" let-files>
+          <div>Additional content.</div>
+      </ng-template>
+  </p-fileUpload>
+</div>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

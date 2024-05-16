@@ -1,0 +1,63 @@
+<h2 mat-dialog-title style="margin: 0px auto;">Créer une formation</h2>
+<mat-dialog-content class="mat-typography">
+  
+  <form class="example-form" style="display: block;">
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Entrer Nom De theme</mat-label>
+  <input type="text" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher"
+         placeholder="xx-xxx-xxx">
+  
+  @if (inputFormControl1.hasError('required')) {
+    <mat-error>Nom De theme <strong>Obligatoire</strong></mat-error>
+  }
+</mat-form-field>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Description</mat-label>
+  <textarea matInput placeholder="xx xxx xxxx..."></textarea>
+</mat-form-field>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+    <mat-label>Prix</mat-label>
+    <input matInput placeholder="xx xxx xx" >
+  </mat-form-field>
+
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Choose a date de debut</mat-label>
+  <input matInput [matDatepicker]="datededebut" [formControl]="inputFormControl3" [errorStateMatcher]="matcher">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="datededebut"></mat-datepicker-toggle>
+  <mat-datepicker #datededebut></mat-datepicker>
+  @if (inputFormControl3.hasError('required')) {
+    <mat-error>date de debut <strong>Obligatoire</strong></mat-error>
+  }
+</mat-form-field>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Choose a date de fin</mat-label>
+  <input matInput [matDatepicker]="datedefin" [formControl]="inputFormControl4" [errorStateMatcher]="matcher"> 
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="datedefin"></mat-datepicker-toggle>
+  <mat-datepicker #datedefin></mat-datepicker>
+  @if (inputFormControl4.hasError('required')) {
+    <mat-error>date de fin <strong>Obligatoire</strong></mat-error>
+  }
+</mat-form-field>     
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

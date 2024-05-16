@@ -1,0 +1,24 @@
+table {
+    width: 290%;
+    border-radius: 23%;
+    -webkit-border-radius: 23%;
+    -moz-border-radius: 23%;
+    -ms-border-radius: 23%;
+    -o-border-radius: 23%;
+   
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 290%;
+    border-radius: 23%;
+    -webkit-border-radius: 23%;
+    -moz-border-radius: 23%;
+    -ms-border-radius: 23%;
+    -o-border-radius: 23%;
+  }
+  
+  td, th {
+    width: 15px;
+  }
+  

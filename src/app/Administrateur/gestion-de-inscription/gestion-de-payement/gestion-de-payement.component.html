@@ -1,0 +1,76 @@
+<h2 mat-dialog-title style="margin: 0px auto;">Détails de paiement</h2>
+<mat-dialog-content class="mat-typography">
+  
+
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="example-form" style="display: block;">
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+          <mat-label>Entrer Nom De theme</mat-label>
+          <input type="text" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher"
+                 placeholder="xx-xxx-xxx">
+          
+          @if (inputFormControl1.hasError('required')) {
+            <mat-error>Nom De theme <strong>Obligatoire</strong></mat-error>
+          }
+          
+        </mat-form-field>
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        
+        <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+            <mat-label>Prix</mat-label>
+            <input matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher" >
+            @if (!inputFormControl1.hasError('required')&& inputFormControl1.hasError('missingDigit')) {
+              <mat-error>Prix doit contenir des <strong>chiffre</strong></mat-error>
+            }
+            @if (inputFormControl1.hasError('required')) {
+              <mat-error>Prix <strong>Obligatoire</strong></mat-error>
+            }
+          </mat-form-field>
+        
+          <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+            <mat-label>Etat de paiement</mat-label>
+            <mat-select >
+              <mat-option value="one">Payé</mat-option>
+              <mat-option value="two">non payé</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <br>        
+        <h3>Bon de commande :</h3>      
+        <div class="card flex justify-content-center" >
+          <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="application/pdf" maxFileSize="1000000000">
+              <ng-template pTemplate="toolbar">
+                  <div class="py-3">Upload 3 Files</div>
+              </ng-template>
+              <ng-template let-file pTemplate="file">
+                  <div>Custom UI to display a file</div>
+              </ng-template>
+              <ng-template pTemplate="content" let-files>
+                  <div>Additional content.</div>
+              </ng-template>
+          </p-fileUpload>
+        </div>
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->   
+          </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

@@ -1,0 +1,58 @@
+:host { 
+    display: contents; 
+  }
+  .home-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    padding-top: 0px;
+    padding-left: 300px;
+    padding-right: 300px;
+    flex-direction: column;
+    padding-bottom: 0px;
+    justify-content: flex-start;
+    
+  }
+  .home-container1 {
+    width: 100%;
+    border: 2px dashed rgba(120, 120, 120, 0.4);
+    height: 1000px;
+    display: ruby;
+    padding: var(--dl-space-space-fourunits);
+    align-items: flex-start;
+	
+  }
+
+  section {
+    display: table;
+  }
+  
+  .example-label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
+  }
+  
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }

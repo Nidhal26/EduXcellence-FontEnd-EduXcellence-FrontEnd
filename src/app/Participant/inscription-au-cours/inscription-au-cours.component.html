@@ -1,0 +1,55 @@
+<div class="home-container">
+    <div class="home-container1">
+        <form class="example-form" style="width: 1180px; margin: auto;">
+            <mat-form-field class="example-full-width" style="width: 500px; display: block; margin: 0px auto;">
+              <mat-label>Nom & Prénom</mat-label>
+              <input matInput placeholder="Ex. xxx" value="xxx xxx" [formControl]="NPFormControl" >
+              @if (NPFormControl.hasError('required')) {
+                <mat-error>Nom & Prénom est <strong>Obligatoire</strong></mat-error>
+              }
+            </mat-form-field>
+        
+            <mat-form-field class="example-full-width" style="width: 500px; display: block; margin: 0px auto;">
+              <mat-label>Prix :</mat-label>
+              <input matInput placeholder="Ex. xxx" value="xxxx" [formControl]="NPFormControl" >
+              @if (NPFormControl.hasError('required')) {
+                <mat-error>Prix est <strong>Obligatoire</strong></mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" style="width: 500px; display: block; margin: 0px auto;">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                       placeholder="Ex. pat@example.com">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                  <mat-error>Entrer un email valide</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                  <mat-error>Email est <strong>obligatoire</strong></mat-error>
+                }
+            </mat-form-field>
+            <br>
+            <h3 style="width: 42%; margin: auto;">Bon de commande :</h3 >
+              <br>
+            <div class="card flex justify-content-center" style="width: 500px; display: block; margin: 0px auto;">
+              <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="application/pdf" maxFileSize="1000000000">
+                  <ng-template pTemplate="toolbar">
+                      <div class="py-3">Upload 3 Files</div>
+                  </ng-template>
+                  <ng-template let-file pTemplate="file">
+                      <div>Custom UI to display a file</div>
+                  </ng-template>
+                  <ng-template pTemplate="content" let-files>
+                      <div>Additional content.</div>
+                  </ng-template>
+              </p-fileUpload>
+            </div>
+            <br>
+            <button mat-button color="primary" style="width: 65%; margin: auto;" (click)="inscription()">S'inscrire</button>
+
+        </form>
+    </div>
+</div>
+        
+  

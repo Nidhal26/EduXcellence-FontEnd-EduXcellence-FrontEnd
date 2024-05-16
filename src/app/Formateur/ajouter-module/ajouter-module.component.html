@@ -1,0 +1,47 @@
+<h2 mat-dialog-title style="margin: 0px auto;">Modifier Cpmpte De Formateur</h2>
+<mat-dialog-content class="mat-typography">
+  
+  <form class="example-form" style="display: block;">
+    
+  <h3>Les Modules</h3>      
+<div class="card flex justify-content-center" >
+  <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*" maxFileSize="1000000">
+      <ng-template pTemplate="toolbar">
+          <div class="py-3">Upload 3 Files</div>
+      </ng-template>
+      <ng-template let-file pTemplate="file">
+          <div>Custom UI to display a file</div>
+      </ng-template>
+      <ng-template pTemplate="content" let-files>
+          <div>Additional content.</div>
+      </ng-template>
+  </p-fileUpload>
+</div>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<br>        
+   
+<h3>Les</h3>  
+<div class="card flex justify-content-center">
+  <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*" maxFileSize="1000000">
+      <ng-template pTemplate="toolbar">
+          <div class="py-3">Upload 3 Files</div>
+      </ng-template>
+      <ng-template let-file pTemplate="file">
+          <div>Custom UI to display a file</div>
+      </ng-template>
+      <ng-template pTemplate="content" let-files>
+          <div>Additional content.</div>
+      </ng-template>
+  </p-fileUpload>
+</div>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
