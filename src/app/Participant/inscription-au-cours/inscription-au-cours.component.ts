@@ -12,8 +12,4 @@ export class InscriptionAuCoursComponent {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   NPFormControl = new FormControl('',[Validators.required]);
   matcher = new MyErrorStateMatcher();
-
-  inscription(){
-    
-  }
 }

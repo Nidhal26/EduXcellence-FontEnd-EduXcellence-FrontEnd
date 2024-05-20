@@ -5,12 +5,13 @@ import { ConsulterLesFormateursComponent } from '../gestion-de-formateurs/consul
 import { ConsulterUneFormationComponent } from '../gestion-de-formation/consulter-une-formation/consulter-une-formation.component';
 import { AjouterUneFormationComponent } from '../gestion-de-formation/ajouter-une-formation/ajouter-une-formation.component';
 import { ModifierUneFormationComponent } from '../gestion-de-formation/modifier-une-formation/modifier-une-formation.component';
-import { ConsulterLesDemandesDinscriptionComponent } from '../gestion-de-inscription/consulter-les-demandes-dinscription/consulter-les-demandes-dinscription.component';
-import { ConsulterLesComptesDesParticipantsComponent } from '../gestion-de-inscription/consulter-les-comptes-des-participants/consulter-les-comptes-des-participants.component';
 import { ContactComponent } from '../contact/contact.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { CalendrierComponent } from '../calendrier/calendrier/calendrier.component';
+import { ConsulterLesInscriptionsComponent } from '../gestion-de-inscription/consulter-les-inscriptions/consulter-les-inscriptions.component';
+import { ConsulterLesComptesDesParticipantsComponent } from '../gestion-de-participant/consulter-les-comptes-des-participants/consulter-les-comptes-des-participants.component';
+import { PlanificationDeFormationComponent } from '../gestion-de-inscription/planification-de-formation/planification-de-formation.component';
 
 const routes: Routes = [
   {
@@ -24,9 +25,13 @@ const routes: Routes = [
     { path:"Modification", component:ModifierUneFormationComponent}]
   },
   {
-    path:"GestionDinscription", children: [
-    { path:"DemandesD&inscription", component:ConsulterLesDemandesDinscriptionComponent},
+    path:"GestionDeParticipant", children: [
     { path:"Accueil", component:ConsulterLesComptesDesParticipantsComponent}]
+  },
+  {
+    path:"GestionDinscription", children: [
+    { path:"Planification", component:PlanificationDeFormationComponent},
+    { path:"Accueil", component:ConsulterLesInscriptionsComponent}]
   },
 
   { path:"inboxEmail", component:ContactComponent},

@@ -24,6 +24,8 @@ import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } fr
 import { HttpClientModule } from '@angular/common/http';
 import { AProposComponent } from './Éléments supplémentaires/a-propos/a-propos.component';
 import { ContactComponent } from './Éléments supplémentaires/contact/contact.component';
+import { ConsulterLesInscriptionsComponent } from './Administrateur/gestion-de-inscription/consulter-les-inscriptions/consulter-les-inscriptions.component';
+import { PlanificationDeFormationComponent } from './Administrateur/gestion-de-inscription/planification-de-formation/planification-de-formation.component';
 
 
 
@@ -38,8 +40,7 @@ import { ContactComponent } from './Éléments supplémentaires/contact/contact.
     PageHelpComponent,
     DetaillsDesOffresComponent,
     AProposComponent,
-    ContactComponent
-    
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

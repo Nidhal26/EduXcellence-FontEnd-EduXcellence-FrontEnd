@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ServiceAuthentificationService } from '../../Authentification/Service/service-authentification.service';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +11,6 @@ export class HeaderComponent {
 
 token: any ;
 constructor(private _service:ServiceAuthentificationService,private router:Router){
-
   this.token = localStorage.getItem('token');
 }
 
@@ -23,10 +21,13 @@ this.router.navigate(["/"])
 }
 
 
+
 ngOnInit() {
   this._service.data$.subscribe((data) => {
     this.token = data;
   });
 }
+
+
 
 }

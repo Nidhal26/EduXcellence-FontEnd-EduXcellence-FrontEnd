@@ -1,55 +1,115 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceAdministrateurService {
 
-  constructor(private http: HttpClient) { }
+  x:any
+  
+  constructor(private http:HttpClient) { }
 
-  // ajouter un formateur
-  ajouterFormateur(formdata : any){
-    return this.http.post<string>("http://localhost:8080/apiAdmin/ajouterFormateur",formdata);
+  //const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  CreationUnNoveauFormateur(formdata:any,token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.post("http://localhost:8080/apiAdmin/AjouterFormateur",formdata,{headers});
   }
 
-  // lister les formateurs
-  listerFormateurs(formdata:any){
-    return this.http.get("http://localhost:8080/apiAdmin/listerFormateurs",formdata);
+  ConsulterLesFormateurs(token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/listerFormateurs",{headers});
   }
 
-  // ajouter les formations
-  ajouterFormation(formdata : any){
-    return this.http.post<string>("http://localhost:8080/apiAdmin/NouvelleFormation",formdata);
+  ActiverCompteFormateur(token: any, formdata: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.put("http://localhost:8080/apiAdmin/ActiverCompteFormateur",formdata,{headers});  
   }
 
-  // lister les formations
-  listerFormations(formdata:any){
-    return this.http.get("http://localhost:8080/apiAdmin/listerFormations",formdata)
+  DesactiverCompteFormateur(token: any, formdata: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.put("http://localhost:8080/apiAdmin/DesactiverCompteFormateur",formdata,{headers});  
+  }
+  
+ModifierCompteDeFormateur(formdata: FormData,token:any,id:any) {
+  const headers = new HttpHeaders().set('token', `${token}`);
+  return this.http.put("http://localhost:8080/apiAdmin/modifierCompteFormateur/"+id,formdata,{headers});  
   }
 
-  // vérification des comptes
-  verifierComptesParticipants(formdata:any){
-    return this.http.put("http://localhost:8080/apiAdmin/verificationCompte",formdata);
+  getIDF(){
+    return this.x;
+  }
+  SetIDF(id:any){
+    this.x=id;
+  }
+  
+  ListerUnSeulFormateur(id: any, token: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    const body = { id: id };
+  return this.http.get("http://localhost:8080/apiAdmin/listerUnSeulFormateurs/"+id,{headers}); 
+  }  
+  
+  ConsulterLesFormation(token:any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/listerFormations",{headers});
   }
 
-  // activer les comptes des formateurs
-  activerCompteFormateur(formdata:any){
-    return this.http.put("http://localhost:8080/apiAdmin/ActiverCompteFormateur",formdata)
-  } 
-
-  // désactiver un compte formateur
-  desactiverCompteFormateur(formdata:any){
-    return this.http.put("http://localhost:8080/apiAdmin/DesactiverCompteFormateur",formdata)
+  DesactiverFormation(token: any, formdata: any) {
+    const headers = new HttpHeaders().set('Token', `${token}`);
+    return this.http.put("http://localhost:8080/apiAdmin/DesactiverFormation",formdata,{headers});  
   }
 
-  // modifier un compte formateur
-  modifierCompteFormateur(formdata:any){
-    return this.http.put("http://localhost:8080/apiAdmin/modifierCompteFormateur",formdata);
+  ActiverFormation(token: any, formdata: any) {
+    const headers = new HttpHeaders().set('Token', `${token}`);
+    return this.http.put("http://localhost:8080/apiAdmin/ActiverFormation",formdata,{headers});  
   }
 
-  // modifier un compte participant
-  modifierCompteParticipant(formdata:any){
-    return this.http.put("http://localhost:8080/apiAdmin/modifierCompteParticipant",formdata);
+  CreationUneNouvelleFormation(formdata:any,token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.post("http://localhost:8080/apiAdmin/AjouterFormation",formdata,{headers});
+  }
+
+  ListerUnSeulFormation(id: any, token: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    const body = { id: id };
+  return this.http.get("http://localhost:8080/apiAdmin/listerUnSeulFormation/"+id,{headers}); 
+  }
+
+  ModifierUneFormation(formdata: FormData,token:any,id:any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.put("http://localhost:8080/apiAdmin/modifierFormation/"+id,formdata,{headers});  
+  }
+
+  VerifierCompteParticipant(token: any, formdata: FormData) {
+    const headers = new HttpHeaders().set('Token', `${token}`);
+    return this.http.put("http://localhost:8080/apiAdmin/verificationCompteParticipant",formdata,{headers});
+  }
+
+  ConsulterLesParticipants(token: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/listerParticipants",{headers});
+  }
+
+  ListerUnSeulParticipant(id: any, token: any) {
+      const headers = new HttpHeaders().set('token', `${token}`);
+      const body = { id: id };
+    return this.http.get("http://localhost:8080/apiAdmin/listerUnSeulParticipant/"+id,{headers});
+  }
+
+  ModifierCompteDeParticipant(formdata: any, token: any, id: any) {
+        const headers = new HttpHeaders().set('token', `${token}`);
+      return this.http.put("http://localhost:8080/apiAdmin/modifierCompteParticipant/"+id,formdata,{headers});  
+  }
+
+  listerLesPayementsdUnSeulParticipant(formdata: any, token: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.post("http://localhost:8080/apiAdmin/listerLesPayementsdeUnSeulParticipant",formdata,{headers});
+  }
+
+  download(fileName: string): Observable<Blob> {
+    const body = { fileName: fileName };
+    return this.http.get("http://localhost:8080/apiAdmin/download/"+fileName, { responseType: 'blob' });
   }
 }

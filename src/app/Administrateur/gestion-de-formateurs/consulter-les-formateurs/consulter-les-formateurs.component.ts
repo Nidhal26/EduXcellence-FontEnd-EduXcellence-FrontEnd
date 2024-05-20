@@ -1,83 +1,37 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { AjouterUnFormateurComponent } from '../ajouter-un-formateur/ajouter-un-formateur.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AjouterUnFormateurComponent } from '../ajouter-un-formateur/ajouter-un-formateur.component';
 import { ModifierFormateurComponent } from '../modifier-formateur/modifier-formateur.component';
+import { ServiceAdministrateurService } from '../../Service-administrateur/service-administrateur.service';
 
 export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
+  id:any
+  nomPrenom: string;
+  numTelephone:any
+  email:any
+  active:any
 }
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-consulter-les-formateurs',
   templateUrl: './consulter-les-formateurs.component.html',
-  styleUrl: './consulter-les-formateurs.component.css'
+  styleUrls: ['./consulter-les-formateurs.component.css']
 })
-export class ConsulterLesFormateursComponent {
-
-openDialog2() {
- const dialogRef = this.dialog.open(ModifierFormateurComponent);
-
-    dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
-    });
-}
+export class ConsulterLesFormateursComponent implements AfterViewInit {
   
+  displayedColumns: string[] = ['email', 'nomPrenom', 'numTelephone', 'OptionDeCompte'];
+  dataSource: MatTableDataSource<UserData> = new MatTableDataSource<UserData>([]);
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'option'];
-  dataSource: MatTableDataSource<UserData>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+messagesuccess: any;
+messageerror: any;
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
-
-  constructor(public dialog: MatDialog) {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-
-
+  constructor(public dialog: MatDialog, private _service: ServiceAdministrateurService) {
+    this.loadFormateurs();
   }
 
   ngAfterViewInit() {
@@ -94,8 +48,6 @@ openDialog2() {
     }
   }
 
-
-
   openDialog() {
     const dialogRef = this.dialog.open(AjouterUnFormateurComponent);
 
@@ -103,30 +55,65 @@ openDialog2() {
       console.log(`Dialog result: ${result}`);
     });
   }
-}
+
+  openDialog2(x:any) {
+    this._service.SetIDF(x)
+    const dialogRef = this.dialog.open(ModifierFormateurComponent);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  loadFormateurs() {
+    this._service.ConsulterLesFormateurs(localStorage.getItem('token')).subscribe((response: any) => {
+      if (response.TableFormateur) {
+        this.dataSource.data = response.TableFormateur.map((formateur: any) => ({
+          id: formateur.id,
+          email: formateur.email.toString(),
+          nomPrenom: formateur.nomPrenom,
+          numTelephone:formateur.numTelephone,
+          active:formateur.active
+        }));
+      } else {
+        this.dataSource.data = [];
+      }
+    });
+  }
+
+  ActiverCompteFormateur(id:any){
+    let formdata = new FormData();
+    formdata.append("id",id)
+    this._service.ActiverCompteFormateur(localStorage.getItem('token'),formdata).subscribe((response: any) => {
+      if(response.Message=="Le compte a été activé"){
+        this.messagesuccess=response.Message
+        setTimeout(() => {
+          this.messagesuccess=""
+          window.location.reload();
+        }, 2500);
+  }else{
+    this.messageerror=response.Message
+    setTimeout(() => {
+      this.messageerror=""
+      }, 2500);
+  }
+})}
 
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
-
-
-  /*----------------------------------------------------------------------------------------------------------------------------------*/
-
-
-
-
-  
+DesactiverCompteFormateur(id:any){
+  let formdata = new FormData();
+  formdata.append("id",id)
+  this._service.DesactiverCompteFormateur(localStorage.getItem('token'),formdata).subscribe((response: any) => {
+    if(response.Message=="Le compte a été désactivé"){
+      this.messagesuccess=response.Message
+      setTimeout(() => {
+        this.messagesuccess=""
+        window.location.reload();
+      }, 2500);
+}else{
+  this.messageerror=response.Message
+  setTimeout(() => {
+    this.messageerror=""
+    }, 2500);
+}})}
 
 }

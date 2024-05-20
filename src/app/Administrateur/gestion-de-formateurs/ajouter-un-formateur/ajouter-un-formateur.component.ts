@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../modifier-formateur/modifier-formateur.component';
 import { strongPasswordValidator } from '../modifier-formateur/strongPasswordValidator';
 import { ServiceAdministrateurService } from '../../Service-administrateur/service-administrateur.service';
-import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-ajouter-un-formateur',
@@ -11,92 +11,118 @@ import { Router } from '@angular/router';
   styleUrl: './ajouter-un-formateur.component.css'
 })
 export class AjouterUnFormateurComponent {
+
+
+
+  constructor(private _service:ServiceAdministrateurService,public dialogRef: MatDialogRef<AjouterUnFormateurComponent>){}
+
   hide = true;
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  motdepasseFormControl = new FormControl('',[Validators.required, Validators.minLength(10) ,strongPasswordValidator()]);
-  telephoneFormControl = new FormControl('', [Validators.required, strongPasswordValidator(),Validators.minLength(8)]);
-  photoFormControl = new FormControl('', [Validators.required, Validators.email]);
-  cvFormControl = new FormControl('', [Validators.required, Validators.email]);
-  nameFormControl = new FormControl('', [Validators.required]);
-  prenomFormControl = new FormControl('', [Validators.required]);
+  emailFormControl = new FormControl();
+  motdepasseFormControl = new FormControl();
+  telephoneFormControl = new FormControl();
+  photoFormControl = new FormControl();
+  cvFormControl = new FormControl();
+  nameFormControl = new FormControl();
+  prenomFormControl = new FormControl();
 
   matcher = new MyErrorStateMatcher();
 
-  /*------------------------------------------------------------------------------------------------------ */
+  numerotelephone:any=""
+  motdepasse:any=""
+  email:any=""
+  nomprenom:any=""
 
-  NomPrenom: any;
-  Email: any;
-  MotDePasse: any;
-  NumTel: any;
-
-  NumTelTouched: boolean = false;
-  NomPrenomTouched: boolean = false;
-  EmailTouched: boolean = false;
-  MotDePasseTouched: boolean = false;
-
-  messagesuccess: any;
   messagealert: any;
   messageerror: any;
+  messagesuccess:any;
 
-  constructor(private _service:ServiceAdministrateurService,private router:Router){
-
-  }
-
-  ajouterUnFormateur(){
-    if (!this.NomPrenom) {
-      this.NomPrenomTouched = true;
+  AjouterUnNouveauFormateur(){
+    if (this.nomprenom ==""){
+      this.messagealert = "Nom et Prenom Obligatoire";
       setTimeout(() => {
-        this.NomPrenomTouched = false;
+        this.messagealert = "";
       }, 2500);
       return;
     }
-    if (!this.Email) {
-      this.EmailTouched = true;
+    if (this.email =="" ){
+      this.messagealert = "Email Obligatoire";
       setTimeout(() => {
-        this.EmailTouched = false;
+        this.messagealert = "";
       }, 2500);
       return;
     }
-    if (!this.MotDePasse) {
-      this.MotDePasseTouched = true;
+    if (!this.isValidEmail(this.email)){
+      this.messagealert = "Enter Valide Email";
       setTimeout(() => {
-        this.MotDePasseTouched = false;
+        this.messagealert = "";
       }, 2500);
       return;
     }
-    if (!this.NumTel) {
-      this.NumTelTouched = true;
+    if (this.motdepasse ==""){
+      this.messagealert = "Mot De Passe Obligatoire";
       setTimeout(() => {
-        this.NumTelTouched = false;
+        this.messagealert = "";
       }, 2500);
       return;
     }
+    if (!this.isStrongPassword(this.motdepasse)){
+      this.messagealert = "Le mot de passe doit être fort (au moins 8 caractères, avec au moins une lettre et un chiffre) ";
+      setTimeout(() => {
+        this.messagealert = "";
+      }, 2500);
+      return;
+    }
+    if (this.numerotelephone==""){
+      this.messagealert = "Numero De Telephone Obligatoire";
+      setTimeout(() => {
+        this.messagealert = "";
+      }, 2500);
+      return;
+    }
+    if (!this.validatePhoneNumber(this.numerotelephone)){
+      this.messagealert = "Le numéro de téléphone doit contenir uniquement des chiffres et être exactement de 8 chiffres";
+      setTimeout(() => {
+        this.messagealert = "";
+      }, 2500);
+      return;
+    }
+      
     let formdata = new FormData();
-  formdata.append('nomPrenom',this.NomPrenom);
-  formdata.append('email',this.Email);
-  formdata.append('motDePasse',this.MotDePasse);
-  formdata.append('numTelephone',this.NumTel);
-  this._service.ajouterFormateur(formdata).subscribe(
-    (data:any)=>{
-      if (data.Message=="Ajouté avec Succés"){
-        this.messagesuccess=data.Message;
+    formdata.append("email",this.email);
+    formdata.append("motDePasse",this.motdepasse);
+    formdata.append("nomPrenom",this.nomprenom);
+    formdata.append("numTelephone",this.numerotelephone);
+    this._service.CreationUnNoveauFormateur(formdata,localStorage.getItem('token')).subscribe((response:any)=>{
+      if (response.Message =="Noveau Formateur Ajouter Avec Suceé"){
+        this.dialogRef.close();
+        this.messagesuccess= response.Message;
+        setTimeout(()=>{
+          this.messagesuccess="";
+          window.location.reload();
+        },1500)
+      }else{
+        this.messageerror=response.Message;
         setTimeout(() => {
-          this.router.navigate(["/Administrateur/GestionDesFormateurs/NouvelleFormateur"]);
+          this.messageerror="";
         }, 2500);
-    }else{
-      this.messageerror=data.Message;}
-      setTimeout(() => {
-        this.messageerror  = false;
-      }, 2500); 
-    },
-    (error) => {
-      this.messageerror=error.Message;
-      setTimeout(() => {
-        this.messageerror  = false;
-      }, 2500); 
-    }
-  );
+      }
+    })
   }
 
+  isValidEmail(email: string): boolean {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+  
+  isStrongPassword(password: string): boolean {
+    return password.length >= 8 && /\d/.test(password) && /[a-zA-Z]/.test(password);
+  }
+
+  validatePhoneNumber(phoneNumber: string): boolean {
+    const numericRegex = /^[0-9]{8}$/;
+    return numericRegex.test(phoneNumber);
+  }
+closeAlert() {
+throw new Error('Method not implemented.');
+}
 }

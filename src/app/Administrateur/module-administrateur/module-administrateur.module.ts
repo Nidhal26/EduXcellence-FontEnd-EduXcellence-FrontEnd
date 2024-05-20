@@ -8,8 +8,6 @@ import { ConsulterLesFormateursComponent } from '../gestion-de-formateurs/consul
 import { AjouterUnFormateurComponent } from '../gestion-de-formateurs/ajouter-un-formateur/ajouter-un-formateur.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { ModuleAdministrateurRoutingModule } from './module-administrateur-routing.module';
-import { ConsulterLesDemandesDinscriptionComponent } from '../gestion-de-inscription/consulter-les-demandes-dinscription/consulter-les-demandes-dinscription.component';
-import { ConsulterLesComptesDesParticipantsComponent } from '../gestion-de-inscription/consulter-les-comptes-des-participants/consulter-les-comptes-des-participants.component';
 
 /*-----------------------------------------------------------------------Dashboard---------------------------------------------------------------------------------------------*/
 
@@ -40,15 +38,19 @@ import { ModifierFormateurComponent } from '../gestion-de-formateurs/modifier-fo
 
 
 import { FileUploadModule } from 'primeng/fileupload';
-import { ModifierParticipantComponent } from '../gestion-de-inscription/modifier-participant/modifier-participant.component';
 import { ModifierProfileComponent } from '../profile/modifier-profile/modifier-profile.component';
-import { GestionDePayementComponent } from '../gestion-de-inscription/gestion-de-payement/gestion-de-payement.component';
 import { MatSelectModule } from '@angular/material/select';
 import { EvaluationComponent } from '../gestion-de-formation/evaluation/evaluation.component';
 
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ConsulterLesInscriptionsComponent } from '../gestion-de-inscription/consulter-les-inscriptions/consulter-les-inscriptions.component';
+import { PlanificationDeFormationComponent } from '../gestion-de-inscription/planification-de-formation/planification-de-formation.component';
+import { ConsulterLesComptesDesParticipantsComponent } from '../gestion-de-participant/consulter-les-comptes-des-participants/consulter-les-comptes-des-participants.component';
+import { ModifierParticipantComponent } from '../gestion-de-participant/modifier-participant/modifier-participant.component';
+import { GestionDePayementComponent } from '../gestion-de-participant/gestion-de-payement/gestion-de-payement.component';
 
-
+import { CalendarModule } from 'primeng/calendar';
+import { SkeletonModule } from 'primeng/skeleton';//taille width heigth
 @NgModule({
   declarations: [
     ProfileComponent,
@@ -58,7 +60,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ConsulterUneFormationComponent,
     ConsulterLesFormateursComponent,
     AjouterUnFormateurComponent,
-    ConsulterLesDemandesDinscriptionComponent,
     ConsulterLesComptesDesParticipantsComponent,
     DashboardComponent,
     CalendrierComponent,
@@ -67,6 +68,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     ModifierProfileComponent,
     GestionDePayementComponent,
     EvaluationComponent,
+    ConsulterLesInscriptionsComponent,
+    PlanificationDeFormationComponent
+    
+    
   ],
   imports: [
     CommonModule,
@@ -89,6 +94,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FileUploadModule,
     MatSelectModule,
     MatExpansionModule,
+    CalendarModule,
+    SkeletonModule
   ],providers: [
     provideNativeDateAdapter()
   ]

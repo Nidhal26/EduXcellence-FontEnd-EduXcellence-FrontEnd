@@ -1,0 +1,39 @@
+<h2 mat-dialog-title style="margin: 0 auto;">Détails de paiement</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-accordion>
+    <ng-container *ngFor="let payment of ListPayement">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{payment.themedeformation}}
+          </mat-panel-title>
+          <mat-panel-description>
+            État : {{ panelOpenState ? 'ouvert' : 'fermé' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form class="example-form">
+          <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">{{payment.date}}
+            <mat-label>Thème de la formation</mat-label>
+            <input type="text" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher"  [disabled]="true">
+          </mat-form-field>
+          <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+            <mat-label>Prix</mat-label>
+            <input type="number" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher" >{{payment.prix}}
+          </mat-form-field>
+          <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+            <mat-label>Vérification</mat-label>
+            <input type="text" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher" >{{payment.etatdepaiement}}
+          </mat-form-field>
+          <h3>Bon de commande :</h3>
+          <div class="card flex justify-content-center">
+            <button mat-stroked-button color="primary" (click)="onDownload(payment.bondecommande)">Download</button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>
