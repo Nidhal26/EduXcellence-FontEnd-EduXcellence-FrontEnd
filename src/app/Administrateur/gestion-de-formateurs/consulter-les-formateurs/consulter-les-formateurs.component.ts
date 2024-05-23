@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AjouterUnFormateurComponent } from '../ajouter-un-formateur/ajouter-un-formateur.component';
 import { ModifierFormateurComponent } from '../modifier-formateur/modifier-formateur.component';
 import { ServiceAdministrateurService } from '../../Service-administrateur/service-administrateur.service';
+import { MesformationsComponent } from '../../gestion-de-formation/mesformations/mesformations.component';
 
 export interface UserData {
   id:any
@@ -13,6 +14,8 @@ export interface UserData {
   numTelephone:any
   email:any
   active:any
+  specialite:any
+  formationId:any
 }
 
 @Component({
@@ -21,8 +24,9 @@ export interface UserData {
   styleUrls: ['./consulter-les-formateurs.component.css']
 })
 export class ConsulterLesFormateursComponent implements AfterViewInit {
+
   
-  displayedColumns: string[] = ['email', 'nomPrenom', 'numTelephone', 'OptionDeCompte'];
+  displayedColumns: string[] = ['email', 'nomPrenom', 'numTelephone','Specialité','OptionDeCompte'];
   dataSource: MatTableDataSource<UserData> = new MatTableDataSource<UserData>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -72,8 +76,11 @@ messageerror: any;
           email: formateur.email.toString(),
           nomPrenom: formateur.nomPrenom,
           numTelephone:formateur.numTelephone,
-          active:formateur.active
+          active:formateur.active,
+          specialite:formateur.specialite,
+          formationId:formateur.formationID
         }));
+        
       } else {
         this.dataSource.data = [];
       }

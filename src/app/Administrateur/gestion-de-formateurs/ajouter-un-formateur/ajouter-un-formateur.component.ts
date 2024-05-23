@@ -11,6 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrl: './ajouter-un-formateur.component.css'
 })
 export class AjouterUnFormateurComponent {
+specialite: any="";
 
 
 
@@ -73,6 +74,14 @@ export class AjouterUnFormateurComponent {
       }, 2500);
       return;
     }
+    if (this.specialite==""){
+      this.messagealert = "Spécialité Obligatoire";
+      setTimeout(() => {
+        this.messagealert = "";
+      }, 2500);
+      return;
+    }
+    
     if (this.numerotelephone==""){
       this.messagealert = "Numero De Telephone Obligatoire";
       setTimeout(() => {
@@ -93,8 +102,9 @@ export class AjouterUnFormateurComponent {
     formdata.append("motDePasse",this.motdepasse);
     formdata.append("nomPrenom",this.nomprenom);
     formdata.append("numTelephone",this.numerotelephone);
+    formdata.append("specialite",this.specialite);
     this._service.CreationUnNoveauFormateur(formdata,localStorage.getItem('token')).subscribe((response:any)=>{
-      if (response.Message =="Noveau Formateur Ajouter Avec Suceé"){
+      if (response.Message =="Noveau Formateur Ajouté Avec Succès"){
         this.dialogRef.close();
         this.messagesuccess= response.Message;
         setTimeout(()=>{

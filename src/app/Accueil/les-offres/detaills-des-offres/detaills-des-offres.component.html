@@ -1,9 +1,25 @@
-<h2 mat-dialog-title>Titre D'offre</h2>
+<h2 mat-dialog-title>{{UneFormation.themeFormation}}</h2>
+
 <mat-dialog-content>
-  <p>Description</p>
-  <button mat-stroked-button color="primary" routerLink="/Participant/Inscription&au&cours">S'inscrire au cours</button>
+  <mat-form-field class="example-full-width" style="width: 450px; border-radius: 50%; display: block; margin: 0 auto;">
+  <mat-label>Description :</mat-label>
+    <input type="text" matInput disabled  value={{UneFormation.desciption}} >
+  </mat-form-field>
+ 
+  <mat-form-field class="example-full-width" style="width: 450px; border-radius: 50%; display: block; margin: 0 auto;">
+    <mat-label>Prix :</mat-label>
+    <input type="text" matInput disabled  value={{UneFormation.prix}} >
+  </mat-form-field>
+  <mat-form-field class="example-full-width" style="width: 450px; border-radius: 50%; display: block; margin: 0 auto;">
+    <mat-label>Date De Debut :</mat-label>
+    <input type="text" matInput disabled  value={{DD}} >
+  </mat-form-field>
+  <mat-form-field class="example-full-width" style="width: 450px; border-radius: 50%; display: block; margin: 0 auto;">
+    <mat-label>Date De Fin :</mat-label>
+    <input type="text" matInput disabled  value={{DF}} >
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Annuler</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>S'inscrire au cours</button>
   </mat-dialog-actions>

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../../gestion-de-formateurs/modifier-formateur/modifier-formateur.component';
 import { ServiceAdministrateurService } from '../../Service-administrateur/service-administrateur.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-modifier-une-formation',
@@ -23,9 +24,8 @@ export class ModifierUneFormationComponent {
   matcher = new MyErrorStateMatcher();
 
   
-  constructor(private _service:ServiceAdministrateurService,public dialogRef: MatDialogRef<ModifierUneFormationComponent>){
+  constructor(private datePipe: DatePipe,private _service:ServiceAdministrateurService,public dialogRef: MatDialogRef<ModifierUneFormationComponent>){
     this._service.ListerUnSeulFormation(this._service.getIDF(),localStorage.getItem("token")).subscribe((response:any)=>{
-      console.log(typeof(response.Formation.datedebut))
       if (response.Formation){
        this.themedeformation=response.Formation.themeFormation
        this.Description=response.Formation.desciption
@@ -42,6 +42,8 @@ export class ModifierUneFormationComponent {
     })
   }
 
+
+
   themedeformation:any
   Description:any
   Prix:any
@@ -53,6 +55,8 @@ export class ModifierUneFormationComponent {
   messagesuccess:any;
 
   ModifierUneFormation(){
+    const dateDebut = new Date(this.datedebut);
+    const dateFin = new Date(this.datefin);
     if (!this.themedeformation){
       this.messagealert = "Theme De Formation Obligatoire";
       setTimeout(() => {
@@ -95,12 +99,13 @@ export class ModifierUneFormationComponent {
       }, 2500);
       return;
     }  
-    let formdata = new FormData();;
-    formdata.append("themeFormation",this.themedeformation);
-    formdata.append("desciption",this.Description);
-    formdata.append("prix",this.Prix);
-    formdata.append("datedebut",this.datedebut);
-    formdata.append("datefin",this.datefin);
+    const formdata: any = {
+      themeFormation: this.themedeformation,
+      desciption: this.Description,
+      datedebut: dateDebut,
+      datefin: dateFin,
+      prix: this.Prix
+    };
     this._service.ModifierUneFormation(formdata,localStorage.getItem('token'),this._service.getIDF()).subscribe((response:any)=>{
       if (response.Message =="Mise à jour avec succès"){
         this.dialogRef.close();

@@ -1,93 +1,38 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { GestionDePayementComponent } from '../../gestion-de-participant/gestion-de-payement/gestion-de-payement.component';
-import { ModifierParticipantComponent } from '../../gestion-de-participant/modifier-participant/modifier-participant.component';
 import { PlanificationDeFormationComponent } from '../planification-de-formation/planification-de-formation.component';
+import { ServiceAdministrateurService } from '../../Service-administrateur/service-administrateur.service';
 
 export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-  formateur_affecté:string
+  nomprenom: any;
+  formation: any;
+  datedinscription: any;
+  verificationdinscrit: any;
 }
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-consulter-les-inscriptions',
   templateUrl: './consulter-les-inscriptions.component.html',
   styleUrl: './consulter-les-inscriptions.component.scss'
 })
-export class ConsulterLesInscriptionsComponent {
+export class ConsulterLesInscriptionsComponent implements OnInit{
 
-  openDialog2() {
-    const dialogRef = this.dialog.open(GestionDePayementComponent);
-   
-       dialogRef.afterClosed().subscribe((result: any) => {
-         console.log(`Dialog result: ${result}`);
-       });
-   }
-     
-   openDialog3() {
-    const dialogRef = this.dialog.open(ModifierParticipantComponent);
-   
-       dialogRef.afterClosed().subscribe((result: any) => {
-         console.log(`Dialog result: ${result}`);
-       });
-   }
-
-     displayedColumns: string[] = ['id', 'name', 'formateur_affecté','progress', 'option'];
-     dataSource: MatTableDataSource<UserData>;
+     displayedColumns: string[] = ['nomprenom', 'formation', 'datedinscription','verificationdinscrit'];
+     dataSource: MatTableDataSource<UserData>=new MatTableDataSource<UserData>([]);
    
      @ViewChild(MatPaginator)
      paginator!: MatPaginator;
      @ViewChild(MatSort)
      sort!: MatSort;
    
-     constructor(public dialog: MatDialog) {
-       // Create 100 users
-       const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-   
-       // Assign the data to the data source for the table to render
-       this.dataSource = new MatTableDataSource(users);
-   
-   
+     constructor(public dialog: MatDialog,private _service:ServiceAdministrateurService) {
      }
+  ngOnInit(): void {
+    this.loadFormateurs();
+  }
    
      ngAfterViewInit() {
        this.dataSource.paginator = this.paginator;
@@ -106,38 +51,30 @@ export class ConsulterLesInscriptionsComponent {
    
    
      openDialog() {
-       const dialogRef = this.dialog.open(PlanificationDeFormationComponent,{width: '1500px',});
+       const dialogRef = this.dialog.open(PlanificationDeFormationComponent);
    
        dialogRef.afterClosed().subscribe((result: any) => {
         
          console.log(`Dialog result: ${result}`);
        });
      }
+
+     loadFormateurs() {
+      this._service.listerLesPayements(localStorage.getItem('token')).subscribe((response: any) => {
+        if (response.listerParticipantsInscritAuFormation) {
+          this.dataSource.data = response.listerParticipantsInscritAuFormation.map((formation: any) => ({
+            nomprenom:formation.nomprenom,
+            formation:formation.formation,
+            datedinscription:formation.datedinscription,
+            verificationdinscrit:formation.verificationdinscrit
+          }));
+          
+        } else {
+          this.dataSource.data = [];
+          
+        }
+        console.log(this.dataSource.data)
+      });
+    }
    }
-   
-   
-   /** Builds and returns a new User. */
-   function createNewUser(id: number): UserData {
-     const name =
-       NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-       ' ' +
-       NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-       '.';
-   
-     return {
-       id: id.toString(),
-       name: name,
-       progress: Math.round(Math.random() * 100).toString(),
-       fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-       formateur_affecté:name
-     };
-   
-   
-     /*----------------------------------------------------------------------------------------------------------------------------------*/
-   
-   
-   
-   
-     
-   
-   }
+  

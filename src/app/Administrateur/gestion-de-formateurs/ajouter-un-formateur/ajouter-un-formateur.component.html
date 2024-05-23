@@ -21,7 +21,10 @@
   </button>
  </mat-form-field>
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-
+<mat-form-field class="example-full-width" style="width: 500px; border-radius: 50px; display: block; margin: 0 auto;">
+  <mat-label>Spécialité</mat-label>
+  <input matInput [formControl]="nameFormControl" [(ngModel)]="specialite">
+  </mat-form-field>
    
 <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
   <mat-label>Entrer Numéro de téléphone</mat-label>

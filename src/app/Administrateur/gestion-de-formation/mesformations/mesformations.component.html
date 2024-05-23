@@ -1,0 +1,12 @@
+<h2 mat-dialog-title style="margin: 0 auto;">Les Formateurs affectés à cette formation</h2>
+<mat-dialog-content class="mat-typography">
+    <div *ngFor="let formateur of listeformations">
+    <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+        <input type="text" matInput disabled  value={{formateur.nomPrenom}} >
+      </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>OK</button>
+</mat-dialog-actions>

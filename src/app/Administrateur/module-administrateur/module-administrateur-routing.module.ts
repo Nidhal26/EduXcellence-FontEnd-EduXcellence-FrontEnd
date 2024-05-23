@@ -12,6 +12,7 @@ import { CalendrierComponent } from '../calendrier/calendrier/calendrier.compone
 import { ConsulterLesInscriptionsComponent } from '../gestion-de-inscription/consulter-les-inscriptions/consulter-les-inscriptions.component';
 import { ConsulterLesComptesDesParticipantsComponent } from '../gestion-de-participant/consulter-les-comptes-des-participants/consulter-les-comptes-des-participants.component';
 import { PlanificationDeFormationComponent } from '../gestion-de-inscription/planification-de-formation/planification-de-formation.component';
+import { MesformationsComponent } from '../gestion-de-formation/mesformations/mesformations.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
     path:"GestionDeFormation", children: [
     { path:"Accueil", component:ConsulterUneFormationComponent},
     { path:"NouvelleFormation", component:AjouterUneFormationComponent},
-    { path:"Modification", component:ModifierUneFormationComponent}]
+    { path:"Modification", component:ModifierUneFormationComponent},
+    { path:"FormateurAffecté", component:MesformationsComponent}]
   },
   {
     path:"GestionDeParticipant", children: [

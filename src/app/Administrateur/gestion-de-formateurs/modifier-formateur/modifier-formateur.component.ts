@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { strongPasswordValidator } from './strongPasswordValidator';
@@ -18,10 +18,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './modifier-formateur.component.html',
   styleUrl: './modifier-formateur.component.scss'
 })
-export class ModifierFormateurComponent {
+export class ModifierFormateurComponent implements OnInit{
+specialite: any="";
 
-
+ 
   constructor(private _service:ServiceAdministrateurService,public dialogRef: MatDialogRef<ModifierFormateurComponent>){
+    
+  }
+  ngOnInit(): void {
     this._service.ListerUnSeulFormateur(this._service.getIDF(),localStorage.getItem("token")).subscribe((response:any)=>{
       if (response.Message == "Formateur not found"){
         this.messageerror = response.Message
@@ -40,6 +44,7 @@ export class ModifierFormateurComponent {
         this.motdepasse=response.Formateur.motDePasse
         this.email=response.Formateur.email
         this.nomprenom=response.Formateur.nomPrenom
+        this.specialite=response.Formateur.specialite
       }
     })
   }
@@ -53,6 +58,7 @@ export class ModifierFormateurComponent {
   cvFormControl = new FormControl();
   nameFormControl = new FormControl();
   prenomFormControl = new FormControl();
+  specialiteFormControl= new FormControl();
 
   matcher = new MyErrorStateMatcher();
 
@@ -101,6 +107,13 @@ export class ModifierFormateurComponent {
       }, 2500);
       return;
     }
+    if (this.specialite ==""){
+      this.messagealert = "Spécialité Obligatoire";
+      setTimeout(() => {
+        this.messagealert = "";
+      }, 2500);
+      return;
+    }
     if (this.numerotelephone==""){
       this.messagealert = "Numero De Telephone Obligatoire";
       setTimeout(() => {
@@ -121,6 +134,7 @@ export class ModifierFormateurComponent {
     formdata.append("motDePasse",this.motdepasse);
     formdata.append("nomPrenom",this.nomprenom);
     formdata.append("numTelephone",this.numerotelephone);
+    formdata.append("specialite",this.specialite)
     this._service.ModifierCompteDeFormateur(formdata,localStorage.getItem('token'),this._service.getIDF()).subscribe((response:any)=>{
       if (response.Message =="Compte mis à jour avec succès"){
         this.dialogRef.close();

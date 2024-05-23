@@ -1,7 +1,18 @@
 <h2 mat-dialog-title style="margin: 0px auto;">Lancer Le Cycle</h2>
 <mat-dialog-content class="mat-typography">
-   test
+  <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+    <mat-label>Formation</mat-label>
+    <mat-select [(ngModel)]="Formationid" name="formationId">
+      <mat-option *ngFor="let food of foods; trackBy: trackFood" [value]="food.value">{{food.viewValue}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
+  <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+    <mat-label>Formateur a affecter</mat-label>
+    <mat-select [(ngModel)]="Formateurid" name="formateurId">
+      <mat-option *ngFor="let food of foods; trackBy: trackFood" [value]="food.value">{{food.viewValue}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Annuler</button>

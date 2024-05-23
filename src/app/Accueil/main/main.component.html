@@ -12,18 +12,17 @@
 
 </div>
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-<div class="BlockCards">
+<div class="BlockCards" >
      <div *ngFor="let formation of listeFormation">
-     <div class="card" *ngIf="formation.FormateurID.length>0">
+     <div class="card" >
           <div class="card-details">
             <p class="text-title">{{formation.themeFormation}}</p>
-            <p class="text-body">DB: {{formation.datedebut}}</p>
+            <p class="text-body">DD: {{formation.datedebut}}</p>
             <p class="text-body">DF: {{formation.datefin}}</p>
           </div>
-          <button (click)="openDialog()" class="card-button" >More info</button>
+          <button (click)="openDialog(formation.idformation)" class="card-button" >More info</button>
         </div>
-     </div>
-       
+</div>   
 </div>
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->

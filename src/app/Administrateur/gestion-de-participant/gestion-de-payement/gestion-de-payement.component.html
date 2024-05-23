@@ -12,17 +12,17 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <form class="example-form">
-          <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">{{payment.date}}
-            <mat-label>Thème de la formation</mat-label>
-            <input type="text" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher"  [disabled]="true">
+          <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
+            <mat-label >Date de la formation</mat-label>
+            <input type="text" matInput disabled  value={{payment.date}} >
           </mat-form-field>
           <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
             <mat-label>Prix</mat-label>
-            <input type="number" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher" >{{payment.prix}}
+            <input type="number" matInput disabled  value={{payment.prix}}>
           </mat-form-field>
           <mat-form-field class="example-full-width" style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
             <mat-label>Vérification</mat-label>
-            <input type="text" matInput [formControl]="inputFormControl1" [errorStateMatcher]="matcher" >{{payment.etatdepaiement}}
+            <input type="text" matInput disabled  value={{payment.etatdepaiement}}>
           </mat-form-field>
           <h3>Bon de commande :</h3>
           <div class="card flex justify-content-center">

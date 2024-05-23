@@ -44,8 +44,8 @@ if (this.motdepasse==""){
     }
 
     let formdata = new FormData()
-    formdata.append('Matricule', this.Matricule)
-    formdata.append('motdepasse', this.motdepasse)
+    formdata.append('email', this.Matricule)
+    formdata.append('motDePasse', this.motdepasse)
         this._service.ConnectionFormateur(formdata).subscribe(
           (data:any) => {
             if (data.Message != "Invalid email or password"){
