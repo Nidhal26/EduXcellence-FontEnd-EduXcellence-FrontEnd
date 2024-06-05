@@ -181,180 +181,12 @@ div .css-1gqo5qy {
 
 /*------------------------------------------------------------------Box-text-1------------------------------------------------------------------------------------------------*/
 
-._u39gw4 {
-	/* Font & Text */
-	font-family: "Source Sans Pro", Arial, sans-serif;
-	font-size: 19px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	letter-spacing: normal;
-	line-height: 34.2px;
-	text-decoration: none solid rgb(55, 58, 60);
-	text-align: center;
-	text-indent: 0px;
-	text-transform: none;
-	vertical-align: baseline;
-	white-space: normal;
-	word-spacing: 0px;
-
-
-	/* Color & Background */
-	background-attachment: scroll;
-	background-color: rgba(0, 0, 0, 0);
-	background-image: none;
-	background-position: 0% 0%;
-	background-repeat: repeat;
-	color: rgb(55, 58, 60);
-
-	/* Box */
-	height: 140.75px;
-	width: 852px;
-	border: 0px none rgb(55, 58, 60);
-	border-top: 0px none rgb(55, 58, 60);
-	border-right: 0px none rgb(55, 58, 60);
-	border-bottom: 0px none rgb(55, 58, 60);
-	border-left: 0px none rgb(55, 58, 60);
-	margin: -25px 0px 20px;
-	padding: 0px;
-	max-height: none;
-	min-height: 0px;
-	max-width: none;
-	min-width: 0px;
-
-
-	/* Positioning */
-	position: static;
-	top: auto;
-	bottom: auto;
-	right: auto;
-	left: auto;
-	float: none;
-	display: block;
-	clear: none;
-	z-index: auto;
-
-	/* List */
-	list-style-image: none;
-	list-style-type: disc;
-	list-style-position: outside;
-
-	/* Table */
-	border-collapse: separate;
-	border-spacing: 0px 0px;
-	caption-side: top;
-	empty-cells: show;
-	table-layout: auto;
-
-	/* Miscellaneous */
-	overflow: visible;
-	cursor: auto;
-	visibility: visible;
-
-	/* Effects */
-	transform: none;
-	transition: all 0s ease 0s;
-	outline-offset: 0px;
-	box-sizing: border-box;
-	resize: none;
-	text-shadow: none;
-	text-overflow: clip;
-	word-wrap: break-word;
-	box-shadow: none;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 /*-------------------------------------------------------------------------box-text-2-----------------------------------------------------------------------------------------------------*/
 
-div .boxtext {
-	/* Font & Text */
-	font-family: OpenSans, Arial, sans-serif;
-	font-size: 14px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	letter-spacing: normal;
-	line-height: 21px;
-	text-decoration: none solid rgb(55, 58, 60);
-	text-align: start;
-	text-indent: 0px;
-	text-transform: none;
-	vertical-align: baseline;
-	white-space: normal;
-	word-spacing: 0px;
-
-	/* Color & Background */
-	background-attachment: scroll;
-	background-color: rgba(0, 0, 0, 0);
-	background-image: none;
-	background-position: 0% 0%;
-	background-repeat: repeat;
-	color: rgb(55, 58, 60);
-
-	/* Box */
-	height: 160.75px;
-	width: 652px;
-	border: 0px none rgb(55, 58, 60);
-	border-top: 0px none rgb(55, 58, 60);
-	border-right: 0px none rgb(55, 58, 60);
-	border-bottom: 0px none rgb(55, 58, 60);
-	border-left: 0px none rgb(55, 58, 60);
-	margin: 0px;
-	padding: 0px;
-	max-height: none;
-	min-height: auto;
-	max-width: none;
-	min-width: auto;
-
-	/* Positioning */
-	position: static;
-	top: auto;
-	bottom: auto;
-	right: auto;
-	left: auto;
-	float: none;
-	display: block;
-	clear: none;
-	z-index: auto;
-
-	/* List */
-	list-style-image: none;
-	list-style-type: disc;
-	list-style-position: outside;
-
-	/* Table */
-	border-collapse: separate;
-	border-spacing: 0px 0px;
-	caption-side: top;
-	empty-cells: show;
-	table-layout: auto;
-
-	/* Miscellaneous */
-	overflow: visible;
-	cursor: auto;
-	visibility: visible;
-
-	/* Effects */
-	transform: none;
-	transition: all 0s ease 0s;
-	outline-offset: 0px;
-	box-sizing: border-box;
-	resize: none;
-	text-shadow: none;
-	text-overflow: clip;
-	word-wrap: normal;
-	box-shadow: none;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
 
 /*---------------------------------------------------------------------------------text-EduXcellence------------------------------------------------------------------------------------------------------*/
 
@@ -682,14 +514,14 @@ div .BEduXcellence {
 	color: rgb(31, 31, 31);
 
 	/* Box */
-	height: 132px;
+	height: 100px;
 	width: 95%;
 	border: 0px none rgb(31, 31, 31);
 	border-top: 0px none rgb(31, 31, 31);
 	border-right: 0px none rgb(31, 31, 31);
 	border-bottom: 0px none rgb(31, 31, 31);
 	border-left: 0px none rgb(31, 31, 31);
-	margin: 50px auto 0px 0px;
+	margin: 100px auto 0px 0px;
 	padding: 44px 0px 16px;
 	max-height: none;
 	min-height: 0px;
@@ -1770,7 +1602,7 @@ img1 {
     height: 254px;
     border-radius: 20px;
     background: #f5f5f5;
-    position: relative;
+    position: static;
     padding: 1.8rem;
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
@@ -2340,7 +2172,7 @@ img1 {
     height: 254px;
     border-radius: 20px;
     background: #f5f5f5;
-    position: relative;
+    position: static;
     padding: 1.8rem;
     border: 2px solid #c3c6ce;
     transition: 0.5s ease-out;
@@ -2358,16 +2190,14 @@ img1 {
    
    .card-button {
     transform: translate(-50%, 125%);
-    width: 70%;
+    width: 100%;
     border-radius: 1rem;
     border: none;
     background-color: #008bf8;
     color: #fff;
     font-size: 1rem;
     padding: .5rem 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
+    position: relative;
     opacity: 0;
     transition: 0.3s ease-out;
    }

@@ -48,6 +48,9 @@ export class ConsulterLesInscriptionsComponent implements OnInit{
        }
      }
    
+     Deconnecter() {
+      localStorage.clear()
+      }
    
    
      openDialog() {

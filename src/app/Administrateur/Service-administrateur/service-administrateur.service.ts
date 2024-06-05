@@ -6,10 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceAdministrateurService {
-  
-  
 
   x:any
+
   
   constructor(private http:HttpClient) { }
 
@@ -56,6 +55,11 @@ ModifierCompteDeFormateur(formdata: FormData,token:any,id:any) {
   ConsulterLesFormation(token:any) {
     const headers = new HttpHeaders().set('token', `${token}`);
     return this.http.get("http://localhost:8080/apiAdmin/listerFormations",{headers});
+  }
+
+  filtrerFormations(token:any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/filtrerFormations",{headers});
   }
 
   DesactiverFormation(token: any, formdata: any) {
@@ -124,5 +128,40 @@ formateurAffecte(token: any, id: any) {
   const headers = new HttpHeaders().set('token', `${token}`);
 return this.http.get("http://localhost:8080/apiAdmin/lesFormateursAffectesAFormation/"+id,{headers}); 
 }
+
+formateursDisponibles(token: any) {
+  const headers = new HttpHeaders().set('token', `${token}`);
+return this.http.get("http://localhost:8080/apiAdmin/formateursDisponibles",{headers}); 
+}
+
+  Reassignation(token: any, formdata: any) {
+    const headers = new HttpHeaders().set('token', `${token}`);
+  return this.http.post("http://localhost:8080/apiAdmin/Réassignation",formdata,{headers}); 
+  }
+
+  planifierFormation(token:any,formdata:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.post("http://localhost:8080/apiAdmin/planifierFormation",formdata,{headers});
+  }
+
+  NombreDeParticipants(token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/NombreDeParticipants",{headers});
+  }
+
+  NombreDeFormateurs(token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/NombreDeFormateurs",{headers});
+  }
+
+  NombreParticipantsVerifies(token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/NombreParticipantsVerifies",{headers});
+  }
+  
+  NombreParticipantsNonVerifies(token:any){
+    const headers = new HttpHeaders().set('token', `${token}`);
+    return this.http.get("http://localhost:8080/apiAdmin/NombreParticipantsNonVerifies",{headers});
+  }
 
 }

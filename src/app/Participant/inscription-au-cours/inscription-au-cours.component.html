@@ -1,55 +1,135 @@
 <div class="home-container">
     <div class="home-container1">
-        <form class="example-form" style="width: 1180px; margin: auto;">
-            <mat-form-field class="example-full-width" style="width: 500px; display: block; margin: 0px auto;">
-              <mat-label>Nom & Prénom</mat-label>
-              <input matInput placeholder="Ex. xxx" value="xxx xxx" [formControl]="NPFormControl" >
-              @if (NPFormControl.hasError('required')) {
-                <mat-error>Nom & Prénom est <strong>Obligatoire</strong></mat-error>
-              }
+      <h1 style="font-size: 50px; margin-bottom: 15px;">Finalisation de l'Inscription</h1> <br><h3 style=" margin-bottom: 100px;">Téléchargement du Bon de Commande </h3>
+        <form class="example-form" style="width: 1180px; margin: auto;  text-align: center; display: block;">
+            <mat-form-field class="example-full-width"  style="width: 400px;">
+              <mat-label>Formation</mat-label>
+              <input matInput placeholder="Ex. xxx" value="Formation :  {{themedeformation}}"  disabled>
+              
             </mat-form-field>
-        
-            <mat-form-field class="example-full-width" style="width: 500px; display: block; margin: 0px auto;">
+        <br>
+            <mat-form-field class="example-full-width" disabled style="width: 400px; ">
               <mat-label>Prix :</mat-label>
-              <input matInput placeholder="Ex. xxx" value="xxxx" [formControl]="NPFormControl" >
-              @if (NPFormControl.hasError('required')) {
-                <mat-error>Prix est <strong>Obligatoire</strong></mat-error>
-              }
+              <input matInput placeholder="Ex. xxx" value="Prix : {{prix}} "  disabled>
+        
             </mat-form-field>
 
-            <mat-form-field class="example-full-width" style="width: 500px; display: block; margin: 0px auto;">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                       placeholder="Ex. pat@example.com">
-                <mat-hint>Errors appear instantly!</mat-hint>
-                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-                  <mat-error>Entrer un email valide</mat-error>
-                }
-                @if (emailFormControl.hasError('required')) {
-                  <mat-error>Email est <strong>obligatoire</strong></mat-error>
-                }
-            </mat-form-field>
-            <br>
-            <h3 style="width: 42%; margin: auto;">Bon de commande :</h3 >
               <br>
-            <div class="card flex justify-content-center" style="width: 500px; display: block; margin: 0px auto;">
-              <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="application/pdf" maxFileSize="1000000000">
-                  <ng-template pTemplate="toolbar">
-                      <div class="py-3">Upload 3 Files</div>
-                  </ng-template>
-                  <ng-template let-file pTemplate="file">
-                      <div>Custom UI to display a file</div>
-                  </ng-template>
-                  <ng-template pTemplate="content" let-files>
-                      <div>Additional content.</div>
-                  </ng-template>
-              </p-fileUpload>
+            <div class="card flex justify-content-center" >
+              <label for="file" class="labelFile"
+              ><span
+                ><svg
+                  xml:space="preserve"
+                  viewBox="0 0 184.69 184.69"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="Capa_1"
+                  version="1.1"
+                  width="60px"
+                  height="60px"
+                >
+                  <g>
+                    <g>
+                      <g>
+                        <path
+                          d="M149.968,50.186c-8.017-14.308-23.796-22.515-40.717-19.813
+                    C102.609,16.43,88.713,7.576,73.087,7.576c-22.117,0-40.112,17.994-40.112,40.115c0,0.913,0.036,1.854,0.118,2.834
+                    C14.004,54.875,0,72.11,0,91.959c0,23.456,19.082,42.535,42.538,42.535h33.623v-7.025H42.538
+                    c-19.583,0-35.509-15.929-35.509-35.509c0-17.526,13.084-32.621,30.442-35.105c0.931-0.132,1.768-0.633,2.326-1.392
+                    c0.555-0.755,0.795-1.704,0.644-2.63c-0.297-1.904-0.447-3.582-0.447-5.139c0-18.249,14.852-33.094,33.094-33.094
+                    c13.703,0,25.789,8.26,30.803,21.04c0.63,1.621,2.351,2.534,4.058,2.14c15.425-3.568,29.919,3.883,36.604,17.168
+                    c0.508,1.027,1.503,1.736,2.641,1.897c17.368,2.473,30.481,17.569,30.481,35.112c0,19.58-15.937,35.509-35.52,35.509H97.391
+                    v7.025h44.761c23.459,0,42.538-19.079,42.538-42.535C184.69,71.545,169.884,53.901,149.968,50.186z"
+                          style="fill:#010002;"
+                        ></path>
+                      </g>
+                      <g>
+                        <path
+                          d="M108.586,90.201c1.406-1.403,1.406-3.672,0-5.075L88.541,65.078
+                    c-0.701-0.698-1.614-1.045-2.534-1.045l-0.064,0.011c-0.018,0-0.036-0.011-0.054-0.011c-0.931,0-1.85,0.361-2.534,1.045
+                    L63.31,85.127c-1.403,1.403-1.403,3.672,0,5.075c1.403,1.406,3.672,1.406,5.075,0L82.296,76.29v97.227
+                    c0,1.99,1.603,3.597,3.593,3.597c1.979,0,3.59-1.607,3.59-3.597V76.165l14.033,14.036
+                    C104.91,91.608,107.183,91.608,108.586,90.201z"
+                          style="fill:#010002;"
+                        ></path>
+                      </g>
+                    </g>
+                  </g></svg
+              ></span>
+              <p>drag and drop your Bon de commande</p></label
+            >
+            <input class="input" name="text" id="file" type="file" (change)="onFileSelected($event)" />
+            <h3>{{ selectedFileName }}</h3>
+            
+            
             </div>
             <br>
-            <button mat-button color="primary" style="width: 65%; margin: auto;">S'inscrire</button>
+            <button mat-button color="primary" (click)="insererBonDeCommande()" style="width: 65%; margin: auto;">S'inscrire</button>
 
         </form>
     </div>
 </div>
         
+
+
+<div class="popup success-popup" *ngIf="messagesuccess" style="position: fixed; top: 80px; right: 20px; width: auto;" aria-hidden="true">
+  <div class="popup-icon success-icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="success-svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="m12 1c-6.075 0-11 4.925-11 11s4.925 11 11 11 11-4.925 11-11-4.925-11-11-11zm4.768 9.14c.0878-.1004.1546-.21726.1966-.34383.0419-.12657.0581-.26026.0477-.39319-.0105-.13293-.0475-.26242-.1087-.38085-.0613-.11844-.1456-.22342-.2481-.30879-.1024-.08536-.2209-.14938-.3484-.18828s-.2616-.0519-.3942-.03823c-.1327.01366-.2612.05372-.3782.1178-.1169.06409-.2198.15091-.3027.25537l-4.3 5.159-2.225-2.226c-.1886-.1822-.4412-.283-.7034-.2807s-.51301.1075-.69842.2929-.29058.4362-.29285.6984c-.00228.2622.09851.5148.28067.7034l3 3c.0983.0982.2159.1748.3454.2251.1295.0502.2681.0729.4069.0665.1387-.0063.2747-.0414.3991-.1032.1244-.0617.2347-.1487.3236-.2554z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  </div>
+  <div class="success-message">{{messagesuccess}}</div>
+  <div class="popup-icon close-icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      aria-hidden="true"
+      class="close-svg"
+    >
+      <path
+        d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+        class="close-path" 
+      ></path>
+    </svg>
+  </div>
+</div>
+
+<div class="popup error-popup" *ngIf="messageerror" style="position: fixed; top: 80px; right: 20px; width: auto;" aria-hidden="true">
+  <div class="popup-icon error-icon" >
+    <svg
+      class="error-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  </div>
+  <div class="error-message">{{messageerror}}</div>
+  <div class="popup-icon close-icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      class="close-svg"
+    >
+      <path
+        d="m15.8333 5.34166-1.175-1.175-4.6583 4.65834-4.65833-4.65834-1.175 1.175 4.65833 4.65834-4.65833 4.6583 1.175 1.175 4.65833-4.6583 4.6583 4.6583 1.175-1.175-4.6583-4.6583z"
+        class="close-path"  
+      ></path>
+    </svg>
+  </div>
+</div>
+
   

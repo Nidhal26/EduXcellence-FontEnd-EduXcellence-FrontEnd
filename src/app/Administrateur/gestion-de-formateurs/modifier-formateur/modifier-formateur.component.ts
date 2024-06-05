@@ -32,13 +32,13 @@ specialite: any="";
         setTimeout(() => {
           this.messageerror = ""
           this.dialogRef.close();
-        }, 2500);
+        }, 3500);
       }else if(response.Message == "Accès refusé"){
         this.messageerror = response.Message
         setTimeout(() => {
           this.messageerror = ""
           this.dialogRef.close();
-        }, 2500);
+        }, 3500);
       }else{
         this.numerotelephone=response.Formateur.numTelephone
         this.motdepasse=response.Formateur.motDePasse
@@ -76,56 +76,56 @@ specialite: any="";
       this.messagealert = "Nom et Prenom Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.email =="" ){
       this.messagealert = "Email Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.isValidEmail(this.email)){
       this.messagealert = "Enter Valide Email";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.motdepasse ==""){
       this.messagealert = "Mot De Passe Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.isStrongPassword(this.motdepasse)){
       this.messagealert = "Le mot de passe doit être fort (au moins 8 caractères, avec au moins une lettre et un chiffre) ";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.specialite ==""){
       this.messagealert = "Spécialité Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.numerotelephone==""){
       this.messagealert = "Numero De Telephone Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.validatePhoneNumber(this.numerotelephone)){
       this.messagealert = "Le numéro de téléphone doit contenir uniquement des chiffres et être exactement de 8 chiffres";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
       
@@ -137,17 +137,16 @@ specialite: any="";
     formdata.append("specialite",this.specialite)
     this._service.ModifierCompteDeFormateur(formdata,localStorage.getItem('token'),this._service.getIDF()).subscribe((response:any)=>{
       if (response.Message =="Compte mis à jour avec succès"){
-        this.dialogRef.close();
         this.messagesuccess= response.Message;
         setTimeout(()=>{
           this.messagesuccess="";
           window.location.reload();
-        },1500)
+        },3500)
       }else{
         this.messageerror=response.Message;
         setTimeout(() => {
           this.messageerror="";
-        }, 2500);
+        }, 3500);
       }
     })
   }

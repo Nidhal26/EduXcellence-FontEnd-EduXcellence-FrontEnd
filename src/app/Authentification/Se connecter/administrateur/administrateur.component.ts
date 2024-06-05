@@ -34,14 +34,14 @@ ConnexionAdministrateur() {
     this.messagealert = "ID Obligatoire"
     setTimeout(() => {
       this.messagealert = ""
-    }, 2500);
+    }, 3500);
     return;
   }
   if(this.motdepasse==""){
     this.messagealert = "Mot de passe Obligatoire"
     setTimeout(() => {
       this.messagealert = ""
-      }, 2500);
+      }, 3500);
       return;
   }
 let formdata = new FormData();
@@ -52,14 +52,15 @@ this._service.ConnectionAdmin(formdata).subscribe((response:any)=>{
     this.messageerror = response.Message; 
     setTimeout(() => {
      this.messageerror = ""; 
-    }, 2500);
+    }, 3500);
     
   }else{
+    localStorage.setItem('reload',"active")
     this.messagesuccess = response.Message;
     setTimeout(() => {
       this.messagesuccess = "";
       this.router.navigate(["/Administrateur/Dashboard"])
-    }, 2500);
+    }, 3500);
     localStorage.setItem("token",response.Token)
   }
 })

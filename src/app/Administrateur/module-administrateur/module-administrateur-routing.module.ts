@@ -5,8 +5,6 @@ import { ConsulterLesFormateursComponent } from '../gestion-de-formateurs/consul
 import { ConsulterUneFormationComponent } from '../gestion-de-formation/consulter-une-formation/consulter-une-formation.component';
 import { AjouterUneFormationComponent } from '../gestion-de-formation/ajouter-une-formation/ajouter-une-formation.component';
 import { ModifierUneFormationComponent } from '../gestion-de-formation/modifier-une-formation/modifier-une-formation.component';
-import { ContactComponent } from '../contact/contact.component';
-import { ProfileComponent } from '../profile/profile.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { CalendrierComponent } from '../calendrier/calendrier/calendrier.component';
 import { ConsulterLesInscriptionsComponent } from '../gestion-de-inscription/consulter-les-inscriptions/consulter-les-inscriptions.component';
@@ -36,8 +34,6 @@ const routes: Routes = [
     { path:"Accueil", component:ConsulterLesInscriptionsComponent}]
   },
 
-  { path:"inboxEmail", component:ContactComponent},
-  { path:"Profile", component:ProfileComponent},
   { path:"Dashboard", component:DashboardComponent},
   { path:"Calendrier", component:CalendrierComponent},
   

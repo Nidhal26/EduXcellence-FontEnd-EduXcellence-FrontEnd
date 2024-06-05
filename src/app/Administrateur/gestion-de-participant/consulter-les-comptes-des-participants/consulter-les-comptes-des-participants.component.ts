@@ -53,7 +53,7 @@ export class ConsulterLesComptesDesParticipantsComponent {
        });
    }
 
-     displayedColumns: string[] = ['email', 'nomPrenom', 'DetailleDePaiement', 'optioncompte'];
+     displayedColumns: string[] = ['email', 'nomPrenom', 'DetailleDePaiement'];
      dataSource: MatTableDataSource<UserData>=new MatTableDataSource<UserData>([]);
    
      @ViewChild(MatPaginator)
@@ -65,6 +65,10 @@ export class ConsulterLesComptesDesParticipantsComponent {
       this.loadParticipants();
      }
    
+     Deconnecter() {
+      localStorage.clear()
+      }
+      
      ngAfterViewInit() {
        this.dataSource.paginator = this.paginator;
        this.dataSource.sort = this.sort;
@@ -98,23 +102,6 @@ export class ConsulterLesComptesDesParticipantsComponent {
       });
     }
   
-    VerifierCompteParticipant(id:any){
-      let formdata = new FormData();
-      formdata.append("id",id)
-      this._service.VerifierCompteParticipant(localStorage.getItem('token'),formdata).subscribe((response: any) => {
-        if(response.Message=="compte verifier"){
-          this.messagesuccess=response.Message
-          setTimeout(() => {
-            this.messagesuccess=""
-            window.location.reload();
-          }, 2500);
-    }else{
-      this.messageerror=response.Message
-      setTimeout(() => {
-        this.messageerror=""
-        }, 2500);
-    }
-  })}
   
    
  

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ModuleParticipantRoutingModule } from './module-participant-routing.module';
-import { ProfileComponent } from '../profile/profile.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,19 +10,18 @@ import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } fr
 import { FileUploadModule } from 'primeng/fileupload';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { ModifierProfileComponent } from '../profile/modifier-profile/modifier-profile.component';
 import { MesOffresComponent } from '../mes-offres/mes-offres.component';
 import { InscriptionAuCoursComponent } from '../inscription-au-cours/inscription-au-cours.component';
 import { RouterModule } from '@angular/router';
+import { DetaillsDesOffresComponent } from '../mes-offres/detaills-des-offres/detaills-des-offres.component';
 
 
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    ModifierProfileComponent,
     MesOffresComponent,
     InscriptionAuCoursComponent,
+    DetaillsDesOffresComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +40,9 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule
     
+    
   ]
+  
 
 })
 export class ModuleParticipantModule { }

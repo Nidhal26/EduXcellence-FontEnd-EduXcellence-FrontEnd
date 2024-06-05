@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ServiceAdministrateurService } from '../../Service-administrateur/service-administrateur.service';
 import { MesformationsComponent } from '../mesformations/mesformations.component';
+import { ActiveformationComponent } from '../activeformation/activeformation.component';
 
 export interface UserData {
   idformation:any
@@ -95,24 +96,16 @@ messageerror: any=""
     });
     
   }
+  Deconnecter() {
+    localStorage.clear()
+    }
 
-  ActiverFormation(id:any){
-    let formdata = new FormData()
-    formdata.append('id',id)
-    this._service.ActiverFormation(localStorage.getItem('token'),formdata).subscribe((response: any) => {
-      if(response.Message){
-        this.messagesuccess=response.Message
-        setTimeout(() => {
-          this.messagesuccess=""
-          window.location.reload();
-        }, 2500);
-  }else{
-    this.messageerror=response.Message
-    setTimeout(() => {
-      this.messageerror=""
-      }, 2500);
-  }
-})}
+  ActiverFormation(x:any){
+    this._service.SetIDF(x)
+    const dialogRef = this.dialog.open(ActiveformationComponent);
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+    });}
 
 formatDate(date: Date): string {
   return date.toLocaleDateString('fr-FR', { year: 'numeric', month: '2-digit', day: '2-digit' });
@@ -120,6 +113,8 @@ formatDate(date: Date): string {
 
 
 DesactiverFormation(id:any){
+  let verif = confirm('voulez vous désactiver formation')
+  if (verif){
   let formdata = new FormData()
   formdata.append('id',id)
   this._service.DesactiverFormation(localStorage.getItem('token'),formdata).subscribe((response: any) => {
@@ -128,13 +123,13 @@ DesactiverFormation(id:any){
       setTimeout(() => {
         this.messagesuccess=""
         window.location.reload();
-      }, 2500);
+      }, 3500);
 }else{
   this.messageerror=response.Message
   setTimeout(() => {
     this.messageerror=""
-    }, 2500);
-}})}
+    }, 3500);
+}})}}
 
 
 /*convertDateStringToDate(dateString: string): string {

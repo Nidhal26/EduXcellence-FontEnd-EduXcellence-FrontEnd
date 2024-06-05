@@ -6,6 +6,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceAuthentificationService {
+  IsAuthentifier(arg0: string | null) {
+    throw new Error('Method not implemented.');
+  }
+  url: any;
 
   constructor(private http: HttpClient) { }
 
@@ -33,11 +37,24 @@ export class ServiceAuthentificationService {
     }
   }
 
+  isAuthentifier(tokan:any){
+    let formdata = new FormData()
+    formdata.append('token', tokan);
+    return this.http.post("http://localhost:8080/ApiAuth/IsAuthentifier",formdata);
+  }
+
   private dataSource = new BehaviorSubject(localStorage.getItem("token"));
   data$ = this.dataSource.asObservable();
 
   changeData(newData: any) {
     this.dataSource.next(newData);
   }
+
+  setURL(x:any){
+    this.url=x
+  }
   
+  getURL(){
+    return this.url
+  }
 }

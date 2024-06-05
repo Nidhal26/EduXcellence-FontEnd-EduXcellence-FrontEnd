@@ -25,12 +25,8 @@ export class GestionDePayementComponent implements OnInit {
     this._service.listerLesPayementsdUnSeulParticipant(formdata,localStorage.getItem("token")).subscribe((response:any)=>{
       if (response.TablePayement){
         this.ListPayement=response.TablePayement
-        console.log(response)
-        console.log(typeof(this._service.getIDF()))
   }})
   }
-
-  
 
 ListPayement:any
 

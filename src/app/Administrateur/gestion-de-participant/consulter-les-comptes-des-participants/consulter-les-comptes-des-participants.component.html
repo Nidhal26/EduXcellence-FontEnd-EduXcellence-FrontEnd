@@ -12,8 +12,7 @@
             ><span class="home-text07" routerLink="/Administrateur/GestionDeFormation/Accueil"><p-button label="Gestion des formations" [text]="true"></p-button></span
               ><span class="home-text08" routerLink="/Administrateur/GestionDeParticipant/Accueil"><p-button label="Gestion des participants" [text]="true"></p-button></span
                 ><span class="home-text08" routerLink="/Administrateur/GestionDinscription/Accueil"><p-button label="Gestion d'inscription" [text]="true"></p-button></span
-                            ><span class="home-text09" routerLink="/Administrateur/Profile"><span><p-button label="Profile" [text]="true"></p-button></span><br /></span
-            ><span class="home-text12" routerLink="/Administrateur/inboxEmail"><span><p-button label="Help" [text]="true"></p-button></span><br /></span></nav
+            ><span class="home-text12" routerLink="/" (click)="Deconnecter()"><span><p-button label="Se Deconnecter" [text]="true"></p-button></span><br /></span></nav
           ><div class="home-profile"
           ><div class="home-container04"
             ></div
@@ -37,8 +36,10 @@
           </ng-container>
       
           <ng-container matColumnDef="DetailleDePaiement">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails de paiement</th>
-            <td mat-cell *matCellDef="let row"> <button *ngIf="row.formationID && row.formationID.length > 0" mat-stroked-button color="primary" (click)="openDialog2(row.id)">Détails</button><span *ngIf="!row.formationID || row.formationID.length === 0">Participant non inscrit</span> </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails d'inscription</th>
+            <td mat-cell *matCellDef="let row"> 
+              <button *ngIf="row.formationID && row.formationID.length>0" mat-stroked-button color="primary" (click)="openDialog2(row.id)">Détails</button>
+              <span *ngIf="!row.formationID || row.formationID.length == 0">Participant non inscrit</span> </td>
           </ng-container>
       
           <ng-container matColumnDef="nomPrenom">
@@ -46,13 +47,7 @@
             <td mat-cell *matCellDef="let row"> {{row.nomPrenom}} </td>
           </ng-container>
       
-          <ng-container matColumnDef="optioncompte" >
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Option Compte </th>
-            <td mat-cell *matCellDef="let row" >
-              <button mat-stroked-button color="primary" (click)="VerifierCompteParticipant(row.id)" *ngIf="row.verification==false">Verifier compte</button>
-              <span *ngIf="row.verification==true">Compte de Participant est  vérifié</span>
-              </td>
-          </ng-container>
+         
 
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

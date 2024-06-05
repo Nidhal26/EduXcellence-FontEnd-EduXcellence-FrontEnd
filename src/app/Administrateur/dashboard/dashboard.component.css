@@ -23,14 +23,14 @@
   justify-content: flex-start;
 }
 .home-container02 {
-  width: 100%;
+  width: 80%;
   height: 50px;
   display: block;
   position: relative;
   align-items: flex-start;
   border-radius: var(--dl-radius-radius-radius8);
   background-color: #cadbeb;
-  margin: -15px auto 0px auto;
+  margin: -15px 0px 0px 20%;
   border-radius: 15px;
   
 }
@@ -297,7 +297,7 @@
 .home-container09 {
   flex: 0 0 auto;
   width: 99%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
+  /*border: 2px dashed rgba(120, 120, 120, 0.4);*/
   height: 127px;
   display: flex;
   padding: var(--dl-space-space-twounits);
@@ -340,6 +340,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .home-icon {
   width: 130px;
@@ -363,6 +364,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .home-container13 {
   flex: 0 0 auto;
@@ -398,6 +400,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .home-icon4 {
   width: 130px;
@@ -425,6 +428,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  font-weight: 500;
 }
 .home-icon6 {
   width: 130px;

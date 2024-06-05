@@ -29,13 +29,13 @@ export class ModifierParticipantComponent {
         setTimeout(() => {
           this.messageerror = ""
           this.dialogRef.close();
-        }, 2500);
+        }, 3500);
       }else if(response.Message == "Accès refusé"){
         this.messageerror = response.Message
         setTimeout(() => {
           this.messageerror = ""
           this.dialogRef.close();
-        }, 2500);
+        }, 3500);
       }else{
         this.nomprenom=response.Participant.nomPrenom
         this.email=response.Participant.email
@@ -60,35 +60,35 @@ nomprenom:any
       this.messagealert = "Nom et Prenom Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.email =="" ){
       this.messagealert = "Email Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.isValidEmail(this.email)){
       this.messagealert = "Enter Valide Email";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.motdepasse ==""){
       this.messagealert = "Mot De Passe Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.isStrongPassword(this.motdepasse)){
       this.messagealert = "Le mot de passe doit être fort (au moins 8 caractères, avec au moins une lettre et un chiffre) ";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
       
@@ -109,7 +109,7 @@ nomprenom:any
         this.messageerror=response.Message;
         setTimeout(() => {
           this.messageerror="";
-        }, 2500);
+        }, 3500);
       }
     })
   }

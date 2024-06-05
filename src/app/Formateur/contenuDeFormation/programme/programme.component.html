@@ -1,0 +1,40 @@
+<div class="home-container">
+  <span class="home-text">{{themedeformation}}</span>
+  <div class="home-container1">
+    <span class="home-text01">Date de fin: </span>
+    <span class="home-text02">Lien d'évaluation: </span>
+    <span class="home-text03">{{ datefin }}</span>
+    <span class="home-text04">{{ dateEvaluation }}</span>
+    <span class="home-text05">
+      <a href="{{ url }}" target="_blank">Cliquez ici</a>
+    </span>
+    <span class="home-text06">Date de début: </span>
+    <span class="home-text07">{{ datedebut }}</span>
+    <button
+      type="button"
+      class="home-button button"
+      (click)="ajouterEvaluation()"
+      *ngIf="!dateEvaluation"
+    >
+      Ajouter une évaluation
+    </button>
+    <button type="button" class="home-button1 button" (click)="ajouterChapitre()">
+      Insérer un nouveau chapitre
+    </button>
+    <img src="/assets/freelancer-400h.gif" alt="image" class="home-image" />
+    <span class="home-text08" *ngIf="dateEvaluation?.length > 0">Date d'évaluation: </span>
+  </div>
+  <div class="home-container2">
+    <div class="home-container3" *ngFor="let programme of listeprogramme">
+      <div class="programme-item">
+        {{ programme }}
+        <button
+          style="border-radius: 10px; background-color: white; border: solid white;"
+          (click)="getFileFormation(programme)"
+        >
+          Consulter
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

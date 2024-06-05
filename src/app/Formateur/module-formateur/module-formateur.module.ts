@@ -8,21 +8,29 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatDialog, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 
 import { FileUploadModule } from 'primeng/fileupload';
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
-import { ProfileComponent } from '../profile/profile.component';
-import { ModifierProfileComponent } from '../profile/modifier-profile/modifier-profile.component';
+import { ProgrammeComponent } from '../contenuDeFormation/programme/programme.component';
+import { LienEvaluationComponent } from '../contenuDeFormation/lien-evaluation/lien-evaluation.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     MesModulesComponent,
     AjouterModuleComponent,
-    ProfileComponent,
-    ModifierProfileComponent
+    ProgrammeComponent,
+    LienEvaluationComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +46,16 @@ import { ModifierProfileComponent } from '../profile/modifier-profile/modifier-p
     FileUploadModule,
     MatIconModule,
     MatDividerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatCardModule,
+    MatTableModule, 
+    MatSortModule, 
+    MatPaginatorModule, 
+    MatDialogModule,
+    MatSelectModule,
+    MatExpansionModule,
+    HttpClientModule
   ]
 })
 export class ModuleFormateurModule { }

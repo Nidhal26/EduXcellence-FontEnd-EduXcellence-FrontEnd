@@ -43,42 +43,42 @@ specialite: any="";
       this.messagealert = "Nom et Prenom Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.email =="" ){
       this.messagealert = "Email Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.isValidEmail(this.email)){
       this.messagealert = "Enter Valide Email";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.motdepasse ==""){
       this.messagealert = "Mot De Passe Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.isStrongPassword(this.motdepasse)){
       this.messagealert = "Le mot de passe doit être fort (au moins 8 caractères, avec au moins une lettre et un chiffre) ";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (this.specialite==""){
       this.messagealert = "Spécialité Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     
@@ -86,14 +86,14 @@ specialite: any="";
       this.messagealert = "Numero De Telephone Obligatoire";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
     if (!this.validatePhoneNumber(this.numerotelephone)){
       this.messagealert = "Le numéro de téléphone doit contenir uniquement des chiffres et être exactement de 8 chiffres";
       setTimeout(() => {
         this.messagealert = "";
-      }, 2500);
+      }, 3500);
       return;
     }
       
@@ -104,18 +104,22 @@ specialite: any="";
     formdata.append("numTelephone",this.numerotelephone);
     formdata.append("specialite",this.specialite);
     this._service.CreationUnNoveauFormateur(formdata,localStorage.getItem('token')).subscribe((response:any)=>{
-      if (response.Message =="Noveau Formateur Ajouté Avec Succès"){
-        this.dialogRef.close();
-        this.messagesuccess= response.Message;
+      if (response.Message=="Nouveau Formateur Ajouté Avec Succès"){
+        this.messagesuccess=response.Message;
         setTimeout(()=>{
           this.messagesuccess="";
           window.location.reload();
-        },1500)
+        },3500)
+      }else if (response.Message=="Cet Email Exite Déjà"){
+        this.messageerror=response.Message;
+        setTimeout(() => {
+          this.messageerror="";
+        }, 3500);
       }else{
         this.messageerror=response.Message;
         setTimeout(() => {
           this.messageerror="";
-        }, 2500);
+        }, 3500);
       }
     })
   }

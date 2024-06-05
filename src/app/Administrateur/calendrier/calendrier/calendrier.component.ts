@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './calendrier.component.scss'
 })
 export class CalendrierComponent {
+Deconnecter() {
+localStorage.clear()
+}
   selected: Date | null | undefined;
   date: Date[] | undefined;
 }

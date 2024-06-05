@@ -16,6 +16,7 @@ export interface UserData {
   active:any
   specialite:any
   formationId:any
+  Disponiblite:any
 }
 
 @Component({
@@ -78,15 +79,20 @@ messageerror: any;
           numTelephone:formateur.numTelephone,
           active:formateur.active,
           specialite:formateur.specialite,
-          formationId:formateur.formationID
+          formationId:formateur.formationID,
+          Disponiblite:formateur.disponiblite
         }));
-        
+        console.log(this.dataSource.data)
       } else {
         this.dataSource.data = [];
       }
     });
   }
 
+  Deconnecter() {
+    localStorage.clear()
+    }
+    
   ActiverCompteFormateur(id:any){
     let formdata = new FormData();
     formdata.append("id",id)
@@ -96,15 +102,22 @@ messageerror: any;
         setTimeout(() => {
           this.messagesuccess=""
           window.location.reload();
-        }, 2500);
+        }, 3500);
   }else{
     this.messageerror=response.Message
     setTimeout(() => {
       this.messageerror=""
-      }, 2500);
+      }, 3500);
   }
 })}
 
+Reassignation(x:any){
+  let formdata = new FormData();
+  formdata.append("id",x)
+  this._service.Reassignation(localStorage.getItem("token"),formdata).subscribe((data:any)=>{
+    window.location.reload()
+  })
+}
 
 DesactiverCompteFormateur(id:any){
   let formdata = new FormData();
@@ -115,12 +128,12 @@ DesactiverCompteFormateur(id:any){
       setTimeout(() => {
         this.messagesuccess=""
         window.location.reload();
-      }, 2500);
+      }, 3500);
 }else{
   this.messageerror=response.Message
   setTimeout(() => {
     this.messageerror=""
-    }, 2500);
+    }, 3500);
 }})}
 
 }

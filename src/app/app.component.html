@@ -1,3 +1,3 @@
-<!--app-header ></app-header-->
-<router-outlet ></router-outlet>
-<!--app-footer ></app-footer-->
+<app-header *ngIf="this.user=='Participant' || this.user=='Formateur' || ( this.currentUrl!='/Authentification/EduXcellence' && this.token == null )  "></app-header>
+<router-outlet *ngIf="isAuthentifier"></router-outlet>
+<!--app-footer *ngIf="this.user=='Participant' || this.user=='Formateur' || ( this.currentUrl!='/Authentification/EduXcellence' && this.token == null ) "></app-footer-->

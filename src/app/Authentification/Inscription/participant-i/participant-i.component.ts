@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class ParticipantIComponent {
 
-messagesuccess: any;
-messagealert: any;
-messageerror: any;
+messagesuccess: any="";
+messagealert: any="";
+messageerror: any="";
 
 NiveauDetudeTouched: boolean = false;
 NomPrenomTouched: boolean = false;
@@ -33,28 +33,28 @@ InscriptionParticipant(){
     this.NomPrenomTouched = true;
     setTimeout(() => {
       this.NomPrenomTouched = false;
-    }, 2500);
+    }, 3500);
     return;
   }
   if (!this.Email) {
     this.EmailTouched = true;
     setTimeout(() => {
       this.EmailTouched = false;
-    }, 2500);
+    }, 3500);
     return;
   }
   if (!this.MotDePasse) {
     this.MotDePasseTouched = true;
     setTimeout(() => {
       this.MotDePasseTouched = false;
-    }, 2500);
+    }, 3500);
     return;
   }
   if (!this.Niveaudetude) {
     this.NiveauDetudeTouched = true;
     setTimeout(() => {
       this.NiveauDetudeTouched = false;
-    }, 2500);
+    }, 3500);
     return;
   }
   let formdata = new FormData();
@@ -64,22 +64,22 @@ InscriptionParticipant(){
   formdata.append('niveauDEtude',this.Niveaudetude);
   this._service.InscriptionParticipant(formdata).subscribe(
     (data:any)=>{
-      if (data.Message=="Ajouté avec Succées"){
+      if (data.Message=="Ajouté avec Succès"){
         this.messagesuccess=data.Message;
         setTimeout(() => {
           this.router.navigate(["/Authentification/Connexion/Participant"]);
-        }, 2500); 
-    }else{
+        }, 3500); 
+    }else if (data.Message=="Email existe Déjà"){
       this.messageerror=data.Message;}
       setTimeout(() => {
-        this.messageerror  = false;
-      }, 2500); 
+        this.messageerror  = "";
+      }, 3500); 
     },
     (error) => {
       this.messageerror=error.Message;
       setTimeout(() => {
-        this.messageerror  = false;
-      }, 2500); 
+        this.messageerror  = "";
+      }, 3500); 
     }
   );
 }

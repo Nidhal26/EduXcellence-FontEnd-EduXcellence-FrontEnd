@@ -23,7 +23,7 @@
 
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
-      <mat-label>Choose a date de debut</mat-label>
+      <mat-label>Choisir une date de debut</mat-label>
       <input matInput [matDatepicker]="datededebut" [formControl]="inputFormControl3" [errorStateMatcher]="matcher" [(ngModel)]="datedebut" name="datedebut">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="datededebut"></mat-datepicker-toggle>
@@ -31,7 +31,7 @@
     </mat-form-field>
     <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <mat-form-field style="width: 500px; border-radius: 50%; display: block; margin: 0 auto;">
-      <mat-label>Choose a date de fin</mat-label>
+      <mat-label>Choisir une date de fin</mat-label>
       <input matInput [matDatepicker]="datedefin" [formControl]="inputFormControl4" [errorStateMatcher]="matcher" [(ngModel)]="datefin" name="datefin"> 
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="datedefin"></mat-datepicker-toggle>

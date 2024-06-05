@@ -1,11 +1,13 @@
 <div class="home-container">
     <div class="home-container1">
+      <div *ngFor="let formation of listeFormations">
+        <a routerLink="/Participant/MesFormation/Formation" (click)="setidFormation(formation.idFormation,formation.idFormateur) ">
 <div class="card">
   <div class="card-details">
-    <p class="text-title">Card title</p>
-    <p class="text-body">Here are the details of the card</p>
+    <p class="text-title">{{formation.themeFormation}}</p>
   </div>
-  <button class="card-button" >More info</button>
 </div>
+        </a>
+      </div>
     </div>
 </div>
